@@ -1,20 +1,39 @@
 <template>
-  <div id="app">
-    <h1>Whatever we want cause it's our app now</h1>
+  <div id="app" class="main-container">
+    <left-container />
+    <center-container />
+    <right-container />
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import LeftContainer from './containers/LeftContainer.vue';
+import CenterContainer from './containers/CenterContainer.vue';
+import RightContainer from './containers/RightContainer.vue';
 
 export default {
   name: 'app',
-  // components: {
-  //   HelloWorld
-  // }
+  components: {
+    LeftContainer,
+    CenterContainer,
+    RightContainer
+  }
 }
 </script>
 
 <style>
+  .main-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 90%;
+    width: 90%;
+  }
+  .container{
+    border: 1px black solid;
+    height: 600px;
+    width: 350px;
+  }
+
 
 </style>
