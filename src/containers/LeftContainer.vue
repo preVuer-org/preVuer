@@ -25,6 +25,7 @@
     methods: {
       addComponent(e) {
         this.$store.dispatch('addComponent');
+        this.$store.dispatch('drawBox');
       },
       updateText(e) {
         e.preventDefault();

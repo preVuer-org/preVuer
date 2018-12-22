@@ -61,7 +61,6 @@ export const store = new Vuex.Store({
       state.totalComponents + 1;
       state.nextId += 1;
     },
-
     DELETE_COMPONENT : (state, payload) => {
       let target;
       state.components.forEach((element, index) => {
@@ -71,6 +70,19 @@ export const store = new Vuex.Store({
       })
       state.components.splice(target, 1)
       console.log(state.components)  
+    },
+    DRAW_BOX : (state) => {
+      let rect2 = new Konva.Rect({
+        x: 250,
+        y: 100,
+        width: 150,
+        height: 90,
+        fill: 'green',
+        name: 'rect',
+        draggable: true
+      });
+      layer.add(rect2);
+      layer.draw();
     }
   },
   actions: {
@@ -79,6 +91,9 @@ export const store = new Vuex.Store({
     },
     updateText({commit}, payload) {
       commit('UPDATE_TEXT', payload)
+    },
+    drawBox({commit}) {
+      commit('DRAW_BOX')
     },
     getCurrentText({commit}) {
       commit('GET_CURRENT_TEXT')
