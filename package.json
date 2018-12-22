@@ -19,7 +19,6 @@
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.0.1",
-    "electron": "^3.0.13",
     "node-sass": "^4.11.0",
     "pug-plain-loader": "^1.0.0",
     "sass-loader": "^7.1.0",
@@ -33,6 +32,7 @@
     "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "electron": "^3.0.13",
     "konva": "^2.6.0",
     "vue": "^2.5.21",
     "vue-konva": "^2.0.0",
