@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="main-container">
     <left-container />
-    <centers-container />
+    <center-container />
     <right-container />
   </div>
 </template>
