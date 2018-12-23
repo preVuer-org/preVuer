@@ -5,16 +5,28 @@
       :id="component.id" 
       @click="deleteComponent"
     >delete</button>
+    <select>
+      <option>none</option>
+      <option 
+        v-for="parent in getParents"
+        :value="parent.title"
+      > {{ parent.title !== component.title ? parent.title : null }} </option>
+    </select>
   </div>
 </template>
 
 <script>
   export default {
     name: 'component-list-item',
-    props: ['component'],
+    props: ['component', 'parent.title'],
     methods: {
       deleteComponent(e) {
         this.$store.dispatch('deleteComponent', e.target.id)
+      }
+    },
+    computed: {
+      getParents() {
+        return this.$store.getters.GET_COMPONENTS;
       }
     }
   }

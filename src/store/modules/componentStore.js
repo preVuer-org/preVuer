@@ -10,12 +10,10 @@ const componentStore = new Vuex.Store({
       title: null,
       parentId: null,
       childrenIds: [],
-      position: {
-        x: 110,
-        y: 120,
-        height: 50,
-        width: 50
-      },
+      x: 110,
+      y: 120,
+      height: 50,
+      width: 50,
       stroke: 'black',
       strokeWidth: 4,
       draggable: true,
