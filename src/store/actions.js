@@ -19,5 +19,8 @@ export default {
   },
   importImageFile({ commit }, payload) {
     commit('IMPORT_IMAGE_FILE', payload)
+  },
+  clearWorkspace({ commit }) {
+    commit('CLEAR_WORKSPACE')
   }
 };
