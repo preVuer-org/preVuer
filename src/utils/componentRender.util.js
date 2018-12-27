@@ -1,28 +1,38 @@
-const componentRender = () => {
-  return `
-    <template>
-    
-    </template>
-  
-    <script>
-      export default {
-        name: '${ /* formatted component name */ }',
-        components: {
+const formatCamelCaseToDash = (string) => {
+  return string.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase()
+}
 
-        },
-        methods: {
+const componentRender = (component) => {
 
-        },
-        computed: {
+  const { title } = component;
 
-        }
-      }
-    </script>
+  const name = formatCamelCaseToDash(title);
 
-    <style>
-    
-    </style>
-  `;
+  return (
+`<template>
+
+</template>
+
+<script>
+  export default {
+    name: '${name}',
+    components: {
+
+    },
+    methods: {
+
+    },
+    computed: {
+
+    }
+  }
+</script>
+
+<style>
+
+</style>
+`
+)
 };
 
 export default componentRender;
