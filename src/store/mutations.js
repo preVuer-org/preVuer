@@ -49,6 +49,12 @@ export default {
   },
   IMPORT_IMAGE_FILE: (state, payload) => {
     state.imagePath = payload;
-    console.log(payload);
+  },
+  CLEAR_WORKSPACE: (state) => {
+    state.currentText = '',
+    state.nextId = 1,
+    state.totalComponents = 0,
+    state.components = [],
+    state.focusComponent = {}
   }
 };
