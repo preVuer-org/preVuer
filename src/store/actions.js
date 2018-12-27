@@ -16,5 +16,5 @@ export default {
   },
   deleteComponent({ commit }, payload) {
     commit('DELETE_COMPONENT', payload);
-  },
+  }
 };

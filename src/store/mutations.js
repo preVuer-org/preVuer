@@ -1,3 +1,6 @@
+import getColor from "../utils/colors.util";
+import createFiles from '../utils/createFiles.util'
+
 export default {
   UPDATE_TEXT: (state, payload) => {
     state.currentText = payload;
@@ -13,9 +16,10 @@ export default {
         word => word[0].toUpperCase() + word.slice(1))
       .replace(/[-_\s0-9\W]+/gi, '');
     const newComponent = {
-      ...state.newComponent,
+      ...state.component.newComponent,
       title: formattedTitle,
       id: state.nextId.toString(),
+      stroke: getColor()
     };
     state.components.push(newComponent);
     state.focusComponent = newComponent;
@@ -30,7 +34,6 @@ export default {
       }
     })
     state.components.splice(target, 1);
-    // console.log(state.components);
   },
   DRAW_BOX: (state) => {
     let rect2 = new Konva.Rect({
@@ -42,7 +45,5 @@ export default {
       name: 'rect',
       draggable: true
     });
-    // layer.add(rect2);
-    // layer.draw();
   }
 };
