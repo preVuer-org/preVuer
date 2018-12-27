@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import getColor from '../../utils/colors.util';
 
 Vue.use(Vuex);
 
@@ -15,11 +14,12 @@ const componentStore = new Vuex.Store({
       y: 100,
       height: 50,
       width: 50,
-      stroke: '#C6FF00',
+      stroke: 'black',
       strokeWidth: 3,
       strokeScaleEnabled: false,
       draggable: true,
-      opacity: 0.6
+      opacity: 0.5,
+      fill: 'blue',
     }
   }
 });
