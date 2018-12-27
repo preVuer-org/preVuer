@@ -1,5 +1,4 @@
-import getColor from "../utils/colors.util";
-import createFiles from '../utils/createFiles.util'
+import getColor from '../utils/colors.util';
 
 export default {
   UPDATE_TEXT: (state, payload) => {
@@ -15,11 +14,13 @@ export default {
       .replace(/[a-z]+/gi,
         word => word[0].toUpperCase() + word.slice(1))
       .replace(/[-_\s0-9\W]+/gi, '');
+    const newColor = getColor();
     const newComponent = {
       ...state.component.newComponent,
       title: formattedTitle,
       id: state.nextId.toString(),
-      stroke: getColor()
+      // stroke: newColor,
+      fill: newColor,
     };
     state.components.push(newComponent);
     state.focusComponent = newComponent;
@@ -32,7 +33,7 @@ export default {
       if (element.id === payload) {
         target = index;
       }
-    })
+    });
     state.components.splice(target, 1);
   },
   DRAW_BOX: (state) => {
