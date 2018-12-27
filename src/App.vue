@@ -26,12 +26,23 @@ export default {
     position: relative;
     display: flex;
     flex-direction: row;
-    height: 90%;
-    width: 90%;
+    height: 95%;
+    width: 95%;
   }
-  .container{
+
+  #left-container {
     border: 1px black solid;
-    height: 600px;
-    width: 350px;
+    height: 800px;
+    width: 25%;
+  }
+  #center-container {
+    border: 1px black solid;
+    height: 800px;
+    width: 50%;
+  }
+  #right-container {
+    border: 1px black solid;
+    height: 800px;
+    width: 25%;
   }
 </style>
