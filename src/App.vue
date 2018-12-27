@@ -31,17 +31,17 @@ export default {
   }
 
   #left-container {
-    border: 1px black solid;
+    background-color: #252526;
     height: 800px;
     width: 25%;
   }
   #center-container {
-    border: 1px black solid;
+    background-color: #1e1e1e;
     height: 800px;
     width: 50%;
   }
   #right-container {
-    border: 1px black solid;
+    background-color: #303030;
     height: 800px;
     width: 25%;
   }
