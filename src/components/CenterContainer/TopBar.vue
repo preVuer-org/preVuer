@@ -1,12 +1,19 @@
 <template>
   <div id="top-bar">
-    <p>Top Bar</p>
+    <button @click="createFiles">Export Components</button>
   </div>
 </template>
 
 <script>
+import createFilesFunc from '../../utils/createFiles.util.js'
+
   export default {
-    name: 'top-bar'
+    name: 'top-bar',
+    methods: {
+      createFiles() {
+        createFilesFunc(this.$store.state.components)
+      }
+    }
   }
 </script>
 

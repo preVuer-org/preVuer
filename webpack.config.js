@@ -3,6 +3,7 @@ const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   mode: 'development',
+  target: 'electron-main',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
