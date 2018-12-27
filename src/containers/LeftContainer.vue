@@ -12,12 +12,15 @@
     />
     <button @click="addComponent">submit</button>
     <component-list />
+    <button @click="clearWorkspace">Clear Workspace</button>
   </div>
 </template>
 
 <script>
   import ComponentList from '../components/LeftContainer/ComponentList.vue';
   
+  const { dialog } = require('electron').remote;
+
   export default {
     name: 'left-container',
     components: {
@@ -32,6 +35,18 @@
         e.preventDefault();
         this.$store.dispatch('updateText', e.target.value);
         e.target.value = '';
+      },
+      clearWorkspace() {
+        const options = {
+          buttons: ['Yes', 'Cancel'],
+          message: 'Do you want to delete all data?'
+        }
+
+        let response = dialog.showMessageBox(options)
+
+        if (response === 0) {
+          this.$store.dispatch('clearWorkspace');
+        }    
       }
     },
     computed: {
