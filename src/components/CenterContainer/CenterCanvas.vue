@@ -1,5 +1,5 @@
 <template>
-  <div id="center-canvas">
+<div id="center-canvas">
     <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
     <v-layer ref="imageLayer">
       <v-image :config="{
@@ -14,15 +14,14 @@
         @mouseover="onMouseOver"
         @mouseout="onMouseOut"
       ></v-rect>
-      <v-transformer ref="transformer"></v-transformer>
+
+      <v-transformer ref="transformer" :config="trConfig"></v-transformer>
     </v-layer>
   </v-stage>
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'center-canvas',
   data() {
@@ -31,33 +30,10 @@ export default {
         width: window.innerWidth,
         height: window.innerHeight,
       },
-      rectangles: [
-        {
-          name: 'rectangle1',
-          x: 200,
-          y: 200,
-          width: 100,
-          height: 100,
-          fill: 'blue',
-          stroke: 'black',
-          strokeWidth: 4,
-          draggable: true,
-          opacity: 0.3,
-        },
-        {
-          name: 'rectangle2',
-          x: 200,
-          y: 200,
-          width: 200,
-          height: 200,
-          fill: 'blue',
-          stroke: 'yellow',
-          strokeWidth: 10,
-          draggable: true,
-          opacity: 0.3,
-        },
-      ],
-      selectedShapeName: '',
+      trConfig: {
+        rotateEnabled: false,
+      },
+      //selectedRectId: '',
       image: null,
     };
   },
@@ -69,56 +45,53 @@ export default {
       document.body.style.cursor = 'default';
     },
     handleStageMouseDown(e) {
+      
+      // Grab transformer
+      const transformerNode = this.$refs.transformer.getStage();
+      
       // Clicked on the stage -> Clear Transformer Selection
       if (e.target === e.target.getStage()) {
-        this.selectedShapeName = '';
-        this.updateTransformer();
-        // eslint-disable-next-line no-useless-return
-        return;
-      }
-
-      // Clicked on transformer -> Do nothing
-      if (e.target.getParent().className === 'Transformer') {
-        // eslint-disable-next-line no-useless-return
-        return;
-      }
-
-      // Get clicked Rectangle by its name
-      const name = e.target.name();
-      const rect = this.rectangles.find(el => el.name === name);
-      if (rect) {
-        this.selectedShapeName = name;
+        
+        // Remove transfomer
+        transformerNode.detach(); // Add check if it is attached
+        // Redraw layer
+        transformerNode.getLayer().batchDraw();
+      
       } else {
-        this.selectedShapeName = '';
-      }
-      this.updateTransformer();
-    },
-    updateTransformer() {
-      const transformerNode = this.$refs.transformer.getStage(); // Get transfomer
-      const stage = transformerNode.getStage(); // Get stage
-      const { selectedShapeName } = this;
 
-      const selectedNode = stage.findOne('.' + selectedShapeName); // Get selected node
+        // Clicked on transformer -> Do nothing
+        if (e.target.getParent().className === 'Transformer') {
+          // eslint-disable-next-line no-useless-return
+          return;
+        }
 
-      // Do nothing if transfomer already attached to rectangle
-      if (selectedNode === transformerNode.node()) {
+        // Do nothing if transfomer already attached to rectangle
+        if (e.target === transformerNode.node()) { 
         // eslint-disable-next-line no-useless-return
-        return;
+          return;
+        }
+
+        // Clicked on rectangle -> Attach Transfomer to it
+        transformerNode.attachTo(e.target);
+        // Redraw layer
+        transformerNode.getLayer().batchDraw();
+
       }
 
-      // Bind transfomer to a selected rectangle if it is not attached
-      if (selectedNode) {
-        transformerNode.attachTo(selectedNode);
-      } else {
-        // Remove Transformer if clicked on stage and not on a rectangle
-        transformerNode.detach();
-      }
-      transformerNode.getLayer().batchDraw();
     },
+  },
+  computed: {
+    rectangles(){
+      
+      return this.$store.state.components
+    }
   }
+
 };
+
 </script>
 
 <style>
 
 </style>
+

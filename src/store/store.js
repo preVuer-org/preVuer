@@ -22,5 +22,5 @@ export const store = new Vuex.Store({
   actions,
   modules: {
     component: componentStore,
-  },
+  }
 });

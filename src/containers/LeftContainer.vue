@@ -1,6 +1,7 @@
 <template>
   <div class="container" id="left-container">
     <label for="input-text">Add a new component</label>
+    <br>
     <input 
       id="input-text" 
       type="text" 
