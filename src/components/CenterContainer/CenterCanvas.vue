@@ -3,7 +3,7 @@
     <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
     <v-layer ref="imageLayer">
       <v-image :config="{
-            image: image
+            image: mockImg || image
           }"/>
     </v-layer>
     <v-layer ref="layer">
@@ -83,6 +83,14 @@ export default {
   computed: {
     rectangles(){
       return this.$store.state.components
+    },
+    mockImg(){
+      const image = new window.Image();
+      image.src = this.$store.state.imagePath;
+      image.onload = () => {
+        this.image = image;
+      }
+      return image;
     }
   }
 
