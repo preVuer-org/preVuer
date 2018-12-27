@@ -82,13 +82,11 @@ export default {
   },
   computed: {
     rectangles(){
-      
       return this.$store.state.components
     }
   }
 
 };
-
 </script>
 
 <style>

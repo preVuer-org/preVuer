@@ -6,8 +6,8 @@ import componentRender from './componentRender.util';
 
 const createFiles = (components) => {
   dialog.showOpenDialog({
-    title:"Select a folder",
-    properties: ["openDirectory"]
+    title: 'Select a folder',
+    properties: ['openDirectory']
     }, (folderPaths) => {
       // folderPaths is an array that contains all the selected paths
     if (folderPaths === undefined){

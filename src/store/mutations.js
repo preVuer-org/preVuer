@@ -45,5 +45,9 @@ export default {
       name: 'rect',
       draggable: true
     });
+  },
+  IMPORT_IMAGE_FILE: (state, payload) => {
+    state.imagePath = payload;
+    console.log(payload);
   }
 };

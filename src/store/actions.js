@@ -16,5 +16,8 @@ export default {
   },
   deleteComponent({ commit }, payload) {
     commit('DELETE_COMPONENT', payload);
+  },
+  importImageFile({ commit }, payload) {
+    commit('IMPORT_IMAGE_FILE', payload)
   }
 };
