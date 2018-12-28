@@ -1,10 +1,9 @@
 <template>
   <div class="component-list-item">
-    <p id="component-item-title">{{ component.title }}</p>
-    <button 
-      :id="component.id" 
-      @click="deleteComponent"
-    >delete</button>
+    <div>
+      <p id="component-item-title">{{ component.title }}</p>
+    </div>
+    <div>
     <select>
       <option>none</option>
       <option 
@@ -12,6 +11,15 @@
         :value="parent.title"
       > {{ parent.title !== component.title ? parent.title : null }} </option>
     </select>
+    <button 
+      :id="component.id" 
+      @click="deleteComponent"
+    >delete</button>
+        <!--<md-button class="md-icon-button">
+      <i class=“material-icons”>delete</i>
+    </md-button>
+    -->
+    </div>
   </div>
 </template>
 
@@ -33,6 +41,12 @@
 </script>
 
 <style>
+  .component-list-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
   #component-item-title {
     display: inline;
   }

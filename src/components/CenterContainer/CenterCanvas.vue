@@ -70,7 +70,14 @@ export default {
         // eslint-disable-next-line no-useless-return
           return;
         }
-
+      // Do nothing if clicked on background image
+        if (e.target.className === 'Image'){
+          // Remove transfomer
+          transformerNode.detach();
+          // Redraw layer
+          transformerNode.getLayer().batchDraw();
+          return;
+        }
         // Clicked on rectangle -> Attach Transfomer to it
         transformerNode.attachTo(e.target);
         // Redraw layer
@@ -98,6 +105,8 @@ export default {
 </script>
 
 <style>
-
+  #center-canvas{
+    margin: 25px;
+  }
 </style>
 
