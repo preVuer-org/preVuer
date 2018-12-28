@@ -1,7 +1,7 @@
 <template>
   <div id="top-bar">
-    <button id="import-image-file" @click="importImageFile">Import Image File</button>
-    <button id="export-components" @click="createFiles">Export Components</button>
+    <md-button id="import-image-file" class="md-raised md-primary md-accent" @click="importImageFile">Import Image File</md-button>
+    <md-button id="export-components" class="md-raised md-primary md-accent" @click="createFiles">Export Components</md-button>
   </div>
 </template>
 
@@ -25,7 +25,6 @@ import importImageFileFunc from '../../utils/importImageFile.util.js'
 
 <style>
   #top-bar {
-    background-color: #252526;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,7 +2,6 @@
   <div id="app" class="main-container">
     <left-container />
     <center-container />
-    <right-container />
   </div>
 </template>
 
@@ -23,6 +22,7 @@ export default {
 
 <style>
   .main-container {
+    padding: 20px;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -31,17 +31,19 @@ export default {
   }
 
   #left-container {
-    background-color: #252526;
+    background-color: #4b4b4b;
+    margin-top: 30px;
+    padding: 20px;
     height: 800px;
     width: 25%;
   }
   #center-container {
-    background-color: #1e1e1e;
+    padding: 20px;
     height: 800px;
-    width: 50%;
+    width: 75%;
   }
   #right-container {
-    background-color: #303030;
+
     height: 800px;
     width: 25%;
   }
