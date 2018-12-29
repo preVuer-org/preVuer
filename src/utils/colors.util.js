@@ -16,7 +16,9 @@ const colors = [
   '#F50057',
   '#D500F9',
 ];
-
+/**
+ * getColor randomizes color and assigns to default component
+ */
 const getColor = () => colors[Math.floor(Math.random() * colors.length)];
 
 export default getColor;

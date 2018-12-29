@@ -1,18 +1,23 @@
 <template>
   <div class="container" id="left-container">
-    <label for="input-text">Add a new component</label>
-    <br>
-    <input 
-      id="input-text" 
-      type="text" 
-      placeholder="enter component name" 
-      @change="updateText"
-      @keyup.enter="addComponent" 
-      :value="currentText"
-    />
-    <button @click="addComponent">submit</button>
+    <div id="text-button-pair">
+      <md-field id="component-input">
+        <label>enter component name</label>
+        <md-input 
+          v-model="type"
+          @change="updateText"
+          @keyup.enter="addComponent" 
+          :value="currentText"
+          
+        ></md-input>
+        <span class="md-helper-text md-accent">Add a new component</span>
+      </md-field>
+    </div>
+      <md-button id="addComponent" class="md-icon-button md-raised md-accent" @click="addComponent">
+        <md-icon>+</md-icon>
+      </md-button>
     <component-list />
-    <button @click="clearWorkspace">Clear Workspace</button>
+    <md-button id="clear-workspace" class="md-raised md-primary md-accent" @click="clearWorkspace">Clear Workspace</md-button>
   </div>
 </template>
 
@@ -58,5 +63,14 @@
 </script>
 
 <style>
-
+  #component-input {
+    width: 75%;
+  }
+  #text-button-pair{
+    display: flex;
+    flex-direction: row;
+  }
+  #clear-workspace {
+    margin-top: 40px;
+  }
 </style>
