@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="component-list">
     <component-list-item 
       v-for="(component, index) in getComponents" 
       :component="component" 
@@ -24,6 +24,8 @@
   }
 </script>
 
-<style>
-
+<style> 
+  #component-list{
+    margin-top: 20px;
+  }
 </style>
