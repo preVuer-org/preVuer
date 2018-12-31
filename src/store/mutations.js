@@ -1,4 +1,5 @@
 import getColor from '../utils/colors.util';
+import uniqueNameAlert from '../utils/uniqueNameAlert.util'
 
 export default {
   UPDATE_TEXT: (state, payload) => {
@@ -17,6 +18,15 @@ export default {
       .replace(/[a-z]+/gi,
         word => word[0].toUpperCase() + word.slice(1))
       .replace(/[-_\s0-9\W]+/gi, '');
+
+    state.components.forEach(component => {
+      if (component.title === formattedTitle) {
+        uniqueNameAlert()
+      }
+      if (response === 0) return;
+    })
+
+
     const newColor = getColor();
     // Generating a new component
     const newComponent = {
