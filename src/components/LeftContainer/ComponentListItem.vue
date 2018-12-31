@@ -1,17 +1,27 @@
 <template>
   <div class="component-list-item">
-    <p id="component-item-title">{{ component.title }}</p>
-    <button 
-      :id="component.id" 
-      @click="deleteComponent"
-    >delete</button>
-    <select>
-      <option>none</option>
-      <option 
-        v-for="parent in getParents"
-        :value="parent.title"
-      > {{ parent.title !== component.title ? parent.title : null }} </option>
-    </select>
+    <div>
+      <p id="component-item-title">{{ component.title }}</p>
+    </div>
+    <div id="component-details">
+      <p id="parent-menu-label">Parent</p>
+      <select>
+        <option>none</option>
+        <option 
+          v-for="parent in getParents"
+          v-if="parent.title !== component.title"
+          :value="parent.title"
+        > {{ parent.title }} </option>
+      </select>
+      <button 
+        :id="component.id" 
+        @click="deleteComponent"
+      >delete</button>
+          <!--<md-button class="md-icon-button">
+        <i class=“material-icons”>delete</i>
+      </md-button>
+      -->
+    </div>
   </div>
 </template>
 
@@ -33,7 +43,19 @@
 </script>
 
 <style>
+  .component-list-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  #component-details {
+    display: flex;
+    flex-direction: row;
+  }
   #component-item-title {
     display: inline;
+  }
+  #parent-menu-label{
+    margin: 0 5px 0 0;
   }
 </style>

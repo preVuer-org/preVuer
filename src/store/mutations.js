@@ -1,5 +1,10 @@
+import getColor from '../utils/colors.util';
+import uniqueNameAlert from '../utils/uniqueNameAlert.util'
+
 export default {
   UPDATE_TEXT: (state, payload) => {
+    // Changing a current text in a state
+    // Payload is coming from input field
     state.currentText = payload;
   },
   // ADD_COMPONENT : (state) => {
@@ -8,15 +13,30 @@ export default {
   // }
 
   ADD_COMPONENT: (state) => {
+    // Grabbing an input and formatting it to match Vue file declarations
     const formattedTitle = state.currentText
       .replace(/[a-z]+/gi,
         word => word[0].toUpperCase() + word.slice(1))
       .replace(/[-_\s0-9\W]+/gi, '');
+
+    state.components.forEach(component => {
+      if (component.title === formattedTitle) {
+        uniqueNameAlert()
+      }
+      if (response === 0) return;
+    })
+
+
+    const newColor = getColor();
+    // Generating a new component
     const newComponent = {
-      ...state.newComponent,
+      ...state.component.newComponent,
       title: formattedTitle,
       id: state.nextId.toString(),
+      // stroke: newColor,
+      fill: newColor,
     };
+    // Updating state
     state.components.push(newComponent);
     state.focusComponent = newComponent;
     state.totalComponents += 1;
@@ -28,10 +48,11 @@ export default {
       if (element.id === payload) {
         target = index;
       }
-    })
+    });
     state.components.splice(target, 1);
-    // console.log(state.components);
   },
+
+  // Initializing a Konva rectangle
   DRAW_BOX: (state) => {
     let rect2 = new Konva.Rect({
       x: 250,
@@ -42,7 +63,15 @@ export default {
       name: 'rect',
       draggable: true
     });
-    // layer.add(rect2);
-    // layer.draw();
+  },
+  IMPORT_IMAGE_FILE: (state, payload) => {
+    state.imagePath = payload;
+  },
+  CLEAR_WORKSPACE: (state) => {
+    state.currentText = '',
+    state.nextId = 1,
+    state.totalComponents = 0,
+    state.components = [],
+    state.focusComponent = {}
   }
 };

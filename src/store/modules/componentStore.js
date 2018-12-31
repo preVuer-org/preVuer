@@ -10,14 +10,16 @@ const componentStore = new Vuex.Store({
       title: null,
       parentId: null,
       childrenIds: [],
-      x: 110,
-      y: 120,
+      x: 100,
+      y: 100,
       height: 50,
       width: 50,
       stroke: 'black',
-      strokeWidth: 4,
+      strokeWidth: 3,
+      strokeScaleEnabled: false,
       draggable: true,
-      opacity: 0.5
+      opacity: 0.5,
+      fill: 'blue',
     }
   }
 });
