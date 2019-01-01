@@ -6,6 +6,10 @@ const uniqueNameAlert = () => {
     message: 'Component names must be unique'
   }
   let response = dialog.showMessageBox(options)
+
+  if (response === 0) {
+    return;
+  }
 }
 
 export default uniqueNameAlert;
