@@ -53,6 +53,14 @@ export default {
         target = index;
       }
     });
+
+    state.components.forEach(component => {
+      if (component.parentId === Number(payload)) {
+        component.parentId = null;
+        component.parentTitle = 'none';
+      }
+    })
+
     state.components.splice(target, 1);
   },
 
@@ -79,7 +87,7 @@ export default {
     state.focusComponent = {}
   },
   CHANGE_PARENT: (state, payload) => {
-    console.log(typeof payload[0], payload[0], typeof payload[1], payload[1])
+    // payload[0] is childId, payload[1] is parentId
     // convert parentTitle to parentId
     let childId = payload[0]
     let parentId;
@@ -96,6 +104,7 @@ export default {
           component.parentId = null;
         } else {
           component.parentId = Number(parentId)
+          component.parentTitle = payload[1];
         }
       }
     })

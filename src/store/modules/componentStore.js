@@ -9,6 +9,7 @@ const componentStore = new Vuex.Store({
       id: null,
       title: null,
       parentId: null,
+      parentTitle: 'none',
       childrenIds: [],
       x: 100,
       y: 100,
