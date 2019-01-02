@@ -53,9 +53,8 @@
           buttons: ['Yes', 'Cancel'],
           message: 'Do you want to delete all data?'
         }
-
         let response = dialog.showMessageBox(options)
-
+        
         if (response === 0) {
           this.$store.dispatch('clearWorkspace');
         }    

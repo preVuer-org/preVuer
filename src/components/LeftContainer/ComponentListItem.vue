@@ -5,9 +5,13 @@
     </div>
     <div id="component-details">
       <p id="parent-menu-label">Parent</p>
-      <select @change="parentChange" :id="component.id">
+      <select 
+        @change="parentChange" 
+        :id="component.id" 
+        v-model="component.parentTitle"
+      >
         <option>none</option>
-        <option 
+        <option
           v-for="parent in getParents"
           v-if="parent.title !== component.title"
           :value="parent.title"
@@ -18,10 +22,6 @@
         :id="component.id" 
         @click="deleteComponent"
       >delete</button>
-          <!--<md-button class="md-icon-button">
-        <i class=“material-icons”>delete</i>
-      </md-button>
-      -->
     </div>
   </div>
 </template>
