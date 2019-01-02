@@ -13,6 +13,7 @@ export default {
   // }
 
   ADD_COMPONENT: (state) => {
+    let uniqueName = true;
     // Grabbing an input and formatting it to match Vue file declarations
     const formattedTitle = state.currentText
       .replace(/[a-z]+/gi,
@@ -21,11 +22,14 @@ export default {
 
     state.components.forEach(component => {
       if (component.title === formattedTitle) {
+        uniqueName = false;
         uniqueNameAlert()
       }
-      if (response === 0) return;
     })
 
+    if (!uniqueName) {
+      return
+    }
 
     const newColor = getColor();
     // Generating a new component
@@ -73,5 +77,41 @@ export default {
     state.totalComponents = 0,
     state.components = [],
     state.focusComponent = {}
+  },
+  CHANGE_PARENT: (state, payload) => {
+    console.log(typeof payload[0], payload[0], typeof payload[1], payload[1])
+    // convert parentTitle to parentId
+    let childId = payload[0]
+    let parentId;
+    state.components.forEach(component => {
+      if (component.title === payload[1]) {
+        parentId = component.id
+      }
+    })
+
+    // assign parentId to component, handle 'none' selection
+    state.components.forEach(component => {
+      if (component.id === childId) {
+        if (payload[1] === 'none') {
+          component.parentId = null;
+        } else {
+          component.parentId = Number(parentId)
+        }
+      }
+    })
+    // assign OR re-assign childId to parent's childrenID property (array)
+    state.components.forEach(component => {
+      const target = component.childrenIds.indexOf(childId)
+      // if child has parent, remove from parent
+      if (target !== -1) {
+        component.childrenIds.splice(target, 1)
+      }
+      // assign OR re-assign childId to first OR new parent
+      if (component.id === parentId) {
+        const children = component.childrenIds.slice();
+        children.push(childId);
+        component.childrenIds = children;
+      }
+    })
   }
 };

@@ -22,5 +22,8 @@ export default {
   },
   clearWorkspace({ commit }) {
     commit('CLEAR_WORKSPACE')
+  },
+  changeParent({ commit }, payload) {
+    commit('CHANGE_PARENT', payload)
   }
 };

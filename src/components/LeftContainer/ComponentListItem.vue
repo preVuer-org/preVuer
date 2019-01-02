@@ -5,12 +5,13 @@
     </div>
     <div id="component-details">
       <p id="parent-menu-label">Parent</p>
-      <select>
+      <select @change="parentChange" :id="component.id">
         <option>none</option>
         <option 
           v-for="parent in getParents"
           v-if="parent.title !== component.title"
           :value="parent.title"
+          :id="parent.id"
         > {{ parent.title }} </option>
       </select>
       <button 
@@ -28,10 +29,15 @@
 <script>
   export default {
     name: 'component-list-item',
-    props: ['component', 'parent.title'],
+    props: ['component', 'parent.title', 'parent.id'],
     methods: {
       deleteComponent(e) {
         this.$store.dispatch('deleteComponent', e.target.id)
+      },
+      parentChange(e) {
+        const component = e.target.id;
+        const parent = e.target.value;
+        this.$store.dispatch('changeParent', [component, parent]);
       }
     },
     computed: {
