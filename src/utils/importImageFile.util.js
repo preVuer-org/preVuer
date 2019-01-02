@@ -4,13 +4,13 @@ const { dialog } = require('electron').remote;
 const types = [
   {
     name: 'images',
-    extensions: ['jpg', 'jpeg', 'png']
+    extensions: ['jpg', 'jpeg', 'png'],
   }
 ];
 
 const options = {
   filters: types,
-  properties: ['openFile']
+  properties: ['openFile'],
 };
 /**
  * Opens a dialog to open an image file

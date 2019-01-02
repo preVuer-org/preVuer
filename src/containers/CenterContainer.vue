@@ -14,7 +14,7 @@
     components: {
       TopBar,
       CenterCanvas
-    }
+    },
   }
 </script>
 

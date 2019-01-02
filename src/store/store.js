@@ -16,12 +16,12 @@ export const store = new Vuex.Store({
     totalComponents: 0,
     components: [],
     focusComponent: {},
-    imagePath: ''
+    imagePath: '',
   },
   getters,
   mutations,
   actions,
   modules: {
     component: componentStore,
-  }
+  },
 });

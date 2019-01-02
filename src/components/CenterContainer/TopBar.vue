@@ -6,20 +6,20 @@
 </template>
 
 <script>
-import createFilesFunc from '../../utils/createFiles.util.js'
-import importImageFileFunc from '../../utils/importImageFile.util.js'
+import createFilesFunc from '../../utils/createFiles.util.js';
+import importImageFileFunc from '../../utils/importImageFile.util.js';
 
   export default {
     name: 'top-bar',
     methods: {
       createFiles() {
-        createFilesFunc(this.$store.state.components)
+        createFilesFunc(this.$store.state.components);
       },
       importImageFile() {
-        const file = importImageFileFunc()
-        this.$store.dispatch('importImageFile', file)
-      }
-    }
+        const file = importImageFileFunc();
+        this.$store.dispatch('importImageFile', file);
+      },
+    },
   }
 </script>
 
