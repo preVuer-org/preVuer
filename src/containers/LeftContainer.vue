@@ -63,7 +63,7 @@
     computed: {
       currentText() {
         return this.$store.getters.getCurrentText
-      }
+      },
     },
   }
 </script>

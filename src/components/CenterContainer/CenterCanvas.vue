@@ -90,8 +90,8 @@
           this.image = image;
         }
         return image;
-      }
-    }
+      },
+    },
   };
 </script>
 

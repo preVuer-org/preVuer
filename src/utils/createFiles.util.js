@@ -3,12 +3,14 @@ const fs = require('fs');
 const path = require('path');
 
 import componentRender from './componentRender.util';
-// import { format } from 'prettier';
+
 /**
- * 
+ *
  * @param { Array } components
- * Creates Vue files from components array 
+ * Creates Vue files from components array
+ *
  */
+
 const createFiles = (components) => {
   const comp = components;
   dialog.showOpenDialog(

@@ -46,13 +46,12 @@ export default {
       }
     });
 
-    state.components.forEach(component => {
+    state.components.forEach((component) => {
       if (component.parentId === Number(payload)) {
         component.parentId = null;
         component.parentTitle = 'none';
       }
-    })
-
+    });
     state.components.splice(target, 1);
   },
   // Initializing a Konva rectangle
@@ -78,11 +77,7 @@ export default {
     state.focusComponent = {};
   },
   CHANGE_PARENT: (state, payload) => {
-<<<<<<< HEAD
-    console.log(typeof payload[0], payload[0], typeof payload[1], payload[1]);
-=======
     // payload[0] is childId, payload[1] is parentId
->>>>>>> master
     // convert parentTitle to parentId
     const childId = payload[0];
     let parentId;
@@ -93,22 +88,22 @@ export default {
     });
 
     // assign parentId to component, handle 'none' selection
-    state.components.forEach(component => {
+    state.components.forEach((component) => {
       if (component.id === childId) {
         if (payload[1] === 'none') {
           component.parentId = null;
         } else {
-          component.parentId = Number(parentId)
+          component.parentId = Number(parentId);
           component.parentTitle = payload[1];
         }
       }
-    })
+    });
     // assign OR re-assign childId to parent's childrenID property (array)
-    state.components.forEach(component => {
-      const target = component.childrenIds.indexOf(childId)
+    state.components.forEach((component) => {
+      const target = component.childrenIds.indexOf(childId);
       // if child has parent, remove from parent
       if (target !== -1) {
-        component.childrenIds.splice(target, 1)
+        component.childrenIds.splice(target, 1);
       }
       // assign OR re-assign childId to first OR new parent
       if (component.id === parentId) {
@@ -116,6 +111,6 @@ export default {
         children.push(childId);
         component.childrenIds = children;
       }
-    })
+    });
   }
 };

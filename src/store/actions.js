@@ -18,12 +18,12 @@ export default {
     commit('DELETE_COMPONENT', payload);
   },
   importImageFile({ commit }, payload) {
-    commit('IMPORT_IMAGE_FILE', payload)
+    commit('IMPORT_IMAGE_FILE', payload);
   },
   clearWorkspace({ commit }) {
-    commit('CLEAR_WORKSPACE')
+    commit('CLEAR_WORKSPACE');
   },
   changeParent({ commit }, payload) {
-    commit('CHANGE_PARENT', payload)
-  }
+    commit('CHANGE_PARENT', payload);
+  },
 };
