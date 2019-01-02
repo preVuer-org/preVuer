@@ -58,13 +58,13 @@
         if (response === 0) {
           this.$store.dispatch('clearWorkspace');
         }    
-      }
+      },
     },
     computed: {
       currentText() {
         return this.$store.getters.getCurrentText
-      }
-    }
+      },
+    },
   }
 </script>
 
