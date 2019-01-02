@@ -1,5 +1,5 @@
 import getColor from '../utils/colors.util';
-import uniqueNameAlert from '../utils/uniqueNameAlert.util'
+import uniqueNameAlert from '../utils/uniqueNameAlert.util';
 
 export default {
   UPDATE_TEXT: (state, payload) => {
@@ -7,11 +7,6 @@ export default {
     // Payload is coming from input field
     state.currentText = payload;
   },
-  // ADD_COMPONENT : (state) => {
-  //   state.components.push(state.currentText)
-  //   state.currentText = '';
-  // }
-
   ADD_COMPONENT: (state) => {
     let uniqueName = true;
     // Grabbing an input and formatting it to match Vue file declarations
@@ -19,18 +14,15 @@ export default {
       .replace(/[a-z]+/gi,
         word => word[0].toUpperCase() + word.slice(1))
       .replace(/[-_\s0-9\W]+/gi, '');
-
-    state.components.forEach(component => {
+    state.components.forEach((component) => {
       if (component.title === formattedTitle) {
         uniqueName = false;
-        uniqueNameAlert()
+        uniqueNameAlert();
       }
-    })
-
+    });
     if (!uniqueName) {
-      return
+      return;
     }
-
     const newColor = getColor();
     // Generating a new component
     const newComponent = {
@@ -55,7 +47,6 @@ export default {
     });
     state.components.splice(target, 1);
   },
-
   // Initializing a Konva rectangle
   DRAW_BOX: (state) => {
     let rect2 = new Konva.Rect({
@@ -72,22 +63,22 @@ export default {
     state.imagePath = payload;
   },
   CLEAR_WORKSPACE: (state) => {
-    state.currentText = '',
-    state.nextId = 1,
-    state.totalComponents = 0,
-    state.components = [],
-    state.focusComponent = {}
+    state.currentText = '';
+    state.nextId = 1;
+    state.totalComponents = 0;
+    state.components = [];
+    state.focusComponent = {};
   },
   CHANGE_PARENT: (state, payload) => {
-    console.log(typeof payload[0], payload[0], typeof payload[1], payload[1])
+    console.log(typeof payload[0], payload[0], typeof payload[1], payload[1]);
     // convert parentTitle to parentId
-    let childId = payload[0]
+    const childId = payload[0];
     let parentId;
-    state.components.forEach(component => {
+    state.components.forEach((component) => {
       if (component.title === payload[1]) {
-        parentId = component.id
+        parentId = component.id;
       }
-    })
+    });
 
     // assign parentId to component, handle 'none' selection
     state.components.forEach(component => {

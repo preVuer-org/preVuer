@@ -38,13 +38,13 @@
         const component = e.target.id;
         const parent = e.target.value;
         this.$store.dispatch('changeParent', [component, parent]);
-      }
+      },
     },
     computed: {
       getParents() {
         return this.$store.getters.GET_COMPONENTS;
-      }
-    }
+      },
+    },
   }
 </script>
 

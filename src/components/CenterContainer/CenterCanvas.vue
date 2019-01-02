@@ -1,5 +1,5 @@
 <template>
-<div id="center-canvas">
+  <div id="center-canvas">
     <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
     <v-layer ref="imageLayer">
       <v-image :config="{
@@ -17,7 +17,7 @@
       
       <v-transformer ref="transformer" :config="trConfig"></v-transformer>
     </v-layer>
-  </v-stage>
+    </v-stage>
   </div>
 </template>
 
