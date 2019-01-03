@@ -15,7 +15,7 @@ import 'vue-material/dist/theme/black-green-dark.css';
 // @import '~vue-material/dist/theme/all';
 
 import App from './App.vue';
-import { store } from './store/store';
+import store from './store/store';
 
 Vue.config.productionTip = false;
 
