@@ -1,4 +1,5 @@
 import getColor from '../utils/colors.util';
+import formatTitle from '../utils/formatTitle.util';
 import uniqueNameAlert from '../utils/uniqueNameAlert.util';
 
 export default {
@@ -9,17 +10,16 @@ export default {
   },
   ADD_COMPONENT: (state) => {
     let uniqueName = true;
-    // Grabbing an input and formatting it to match Vue file declarations
-    const formattedTitle = state.currentText
-      .replace(/[a-z]+/gi,
-        word => word[0].toUpperCase() + word.slice(1))
-      .replace(/[-_\s0-9\W]+/gi, '');
+    // fomat component title input
+    const formattedTitle = formatTitle(state.currentText);
+    // check if component title already exists. if so, Alert user
     state.components.forEach((component) => {
       if (component.title === formattedTitle) {
         uniqueName = false;
         uniqueNameAlert();
       }
     });
+    // if name is not unique, exit
     if (!uniqueName) {
       return;
     }
