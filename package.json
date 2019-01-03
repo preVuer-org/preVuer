@@ -22,7 +22,6 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-env": "^1.7.0",
     "css-loader": "^2.0.1",
