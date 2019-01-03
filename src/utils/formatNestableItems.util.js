@@ -7,16 +7,22 @@ const formatNestableItems = (components) => {
     }
     return obj;
   },{})
-  // return array of Nestable Items, 'children' property populated by checking cache
-  return components.map(component => {
+  // creates array of Nestable Items, 'children' property populated by checking
+  const children = new Set();
+  const rawNestedComponents = components.map(component => {
     return ({ 
       "id": component.id,
       "text": component.title,
       "children": component.childrenIds.map(childId => {
+        children.add(childId);
         return cache[childId];
       })
     })
   })
+  const filteredComponents = rawNestedComponents.filter(component => {
+    return !children.has(component.id)
+  });
+  return filteredComponents;
 }
 
 export default formatNestableItems;
