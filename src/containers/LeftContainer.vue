@@ -3,8 +3,7 @@
     <div id="input-text-button-pair">
       <md-field id="component-input">
         <label>enter component name</label>
-        <md-input 
-          v-model="type"
+        <md-input
           @change="updateText"
           @keyup.enter="addComponent" 
           :value="currentText" 
