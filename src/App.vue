@@ -2,6 +2,7 @@
   <div id="app" class="main-container">
     <left-container />
     <center-container />
+    <right-container />
   </div>
 </template>
 
@@ -40,11 +41,15 @@ export default {
   #center-container {
     padding: 20px;
     height: 800px;
-    width: 75%;
+    width: 55%;
   }
   #right-container {
-
+    background-color: #3e3e3e;
     height: 800px;
-    width: 25%;
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 20px;
+    height: 800px;
+    width: 20%;
   }
 </style>
