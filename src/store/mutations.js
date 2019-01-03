@@ -9,10 +9,10 @@ export default {
     state.currentText = payload;
   },
   ADD_COMPONENT: (state) => {
-    let uniqueName = true;
     // fomat component title input
     const formattedTitle = formatTitle(state.currentText);
     // check if component title already exists. if so, Alert user
+    let uniqueName = true;
     state.components.forEach((component) => {
       if (component.title === formattedTitle) {
         uniqueName = false;
@@ -24,19 +24,19 @@ export default {
       return;
     }
     const newColor = getColor();
-    // Generating a new component
+    // Generate new component
     const newComponent = {
       ...state.component.newComponent,
       title: formattedTitle,
       id: state.nextId.toString(),
-      // stroke: newColor,
       fill: newColor,
     };
-    // Updating state
+    // Update state
     state.components.push(newComponent);
     state.focusComponent = newComponent;
     state.totalComponents += 1;
     state.nextId += 1;
+    state.currentText = '';
   },
   DELETE_COMPONENT: (state, payload) => {
     let target;

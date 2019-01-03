@@ -61,7 +61,7 @@
     },
     computed: {
       currentText() {
-        return this.$store.getters.getCurrentText
+        return this.$store.getters.getCurrentText;
       },
     },
   }
