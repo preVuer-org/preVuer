@@ -6,7 +6,7 @@
     <div id="component-details">
       <p id="parent-menu-label">Parent</p>
       <select 
-        @change="parentChange" 
+        @change="changeParent" 
         :id="component.id" 
         v-model="component.parentTitle"
       >
@@ -34,7 +34,7 @@
       deleteComponent(e) {
         this.$store.dispatch('deleteComponent', e.target.id)
       },
-      parentChange(e) {
+      changeParent(e) {
         const component = e.target.id;
         const parent = e.target.value;
         this.$store.dispatch('changeParent', [component, parent]);
@@ -42,7 +42,7 @@
     },
     computed: {
       getParents() {
-        return this.$store.getters.GET_COMPONENTS;
+        return this.$store.getters.getComponents;
       },
     },
   }

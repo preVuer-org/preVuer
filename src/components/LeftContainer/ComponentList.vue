@@ -19,7 +19,7 @@
     },
     computed: {
       getComponents() {
-        return this.$store.getters.GET_COMPONENTS;
+        return this.$store.getters.getComponents;
       },
     },
   }
