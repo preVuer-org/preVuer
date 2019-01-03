@@ -9,7 +9,7 @@ import componentStore from './modules/componentStore';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     currentText: '',
     nextId: 1,
@@ -25,3 +25,5 @@ export const store = new Vuex.Store({
     component: componentStore,
   },
 });
+
+export default store;
