@@ -3,7 +3,8 @@ const formatNestableItems = (components) => {
   const cache = components.reduce((obj, component) => {
     obj[component.id] = {
       "id": component.id,
-      "text": component.title
+      "text": component.title,
+      "children": component.childrenIds
     }
     return obj;
   },{})
@@ -22,6 +23,7 @@ const formatNestableItems = (components) => {
   const filteredComponents = rawNestedComponents.filter(component => {
     return !children.has(component.id)
   });
+  console.log(filteredComponents)
   return filteredComponents;
 }
 
