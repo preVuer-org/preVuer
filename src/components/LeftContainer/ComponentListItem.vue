@@ -32,6 +32,12 @@
     props: ['component', 'parent.title', 'parent.id'],
     methods: {
       deleteComponent(e) {
+        const transformerNode = this.$root.$children[0].$children[1].$children[1].$refs.transformer.getStage();
+        // Remove transfomer which otherwise will be left on the stage
+        transformerNode.detach();
+        // Redraw layer
+        transformerNode.getLayer().batchDraw();       
+         
         this.$store.dispatch('deleteComponent', e.target.id)
       },
       changeParent(e) {

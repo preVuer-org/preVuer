@@ -4,6 +4,7 @@ const { default: installExtension, VUEJS_DEVTOOLS } = require('electron-devtools
 let win;
 
 async function createWindow() {
+
   win = new BrowserWindow({ width: 1800, height: 800 });
   // wait for vue dev tools to install before loading index.html
   await installExtension(VUEJS_DEVTOOLS)
@@ -18,7 +19,8 @@ async function createWindow() {
     .catch((err) => console.log('An error occurred: ', err));
 }
 
-app.on('ready', createWindow);
+app.on('ready',createWindow);
+
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
