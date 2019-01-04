@@ -8,7 +8,6 @@
 <script>
   import TopBar from '../components/CenterContainer/TopBar.vue';
   import CenterCanvas from '../components/CenterContainer/CenterCanvas.vue';
-import { clearTimeout } from 'timers';
 
   export default {
     name: 'center-container',
