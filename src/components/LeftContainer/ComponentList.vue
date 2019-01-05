@@ -19,6 +19,7 @@
     },
     computed: {
       getComponents() {
+        console.log(this.$store.getters.getComponents)
         return this.$store.getters.getComponents;
       },
     },
