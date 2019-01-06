@@ -11,7 +11,6 @@
         {{ item.text }}
       </vue-nestable-handle>
     </vue-nestable>
-
   </div>
 
 </template>
@@ -43,7 +42,7 @@
 }
 .nestable-item,
 .nestable-item-copy {
-  margin: 10px 0 0;
+  margin: 5px 0 0;
 }
 .nestable-item:first-child,
 .nestable-item-copy:first-child {
@@ -51,7 +50,7 @@
 }
 .nestable-item .nestable-list,
 .nestable-item-copy .nestable-list {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 .nestable-item {
   position: relative;

@@ -1,7 +1,7 @@
-import formatNestableItems from '../utils/formatNestableItems.util';
+import unflatten from '../utils/unflatten.util'
 
 export default {
   getComponents: state => state.components,
   getCurrentText: state => state.currentText,
-  getNestableItems: state => formatNestableItems(state.components)
+  getNestableItems: state => unflatten(state.components)
 };
