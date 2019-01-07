@@ -4,9 +4,16 @@
       <p id="component-item-title">{{ component.title }}</p>
     </div>
     <div id="component-details">
+      <input
+        :id="component.id"       
+        type='color'
+        :value="component.fill"
+        @change="changeColor"
+        class="chooseColor"
+      />
       <p id="parent-menu-label">Parent</p>
       <select 
-        @change="parentChange" 
+        @change="changeParent" 
         :id="component.id" 
         v-model="component.parentTitle"
       >
@@ -32,19 +39,31 @@
     props: ['component', 'parent.title', 'parent.id'],
     methods: {
       deleteComponent(e) {
+        const transformerNode = this.$root.$children[0].$children[1].$children[1].$refs.transformer.getStage();
+        // Remove transfomer which otherwise will be left on the stage
+        transformerNode.detach();
+        // Redraw layer
+        transformerNode.getLayer().batchDraw();       
+        
         this.$store.dispatch('deleteComponent', e.target.id)
       },
-      parentChange(e) {
+      changeParent(e) {
         const component = e.target.id;
         const parent = e.target.value;
+        console.log(component, parent);
         this.$store.dispatch('changeParent', [component, parent]);
+      },
+      changeColor(e) {
+        const component = e.target.id;
+        const color = e.target.value;
+        this.$store.dispatch('changeColor', [component, color])
       }
     },
     computed: {
       getParents() {
-        return this.$store.getters.GET_COMPONENTS;
-      }
-    }
+        return this.$store.getters.getComponents;
+      },
+    },
   }
 </script>
 
@@ -63,5 +82,8 @@
   }
   #parent-menu-label{
     margin: 0 5px 0 0;
+  }
+  .chooseColor {
+    border: none
   }
 </style>

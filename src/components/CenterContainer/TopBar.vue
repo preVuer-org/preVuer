@@ -6,29 +6,31 @@
 </template>
 
 <script>
-import createFilesFunc from '../../utils/createFiles.util.js'
-import importImageFileFunc from '../../utils/importImageFile.util.js'
+import createFilesFunc from '../../utils/createFiles.util.js';
+import importImageFileFunc from '../../utils/importImageFile.util.js';
 
   export default {
     name: 'top-bar',
     methods: {
       createFiles() {
-        createFilesFunc(this.$store.state.components)
+        createFilesFunc(this.$store.state.components);
       },
       importImageFile() {
-        const file = importImageFileFunc()
-        this.$store.dispatch('importImageFile', file)
-      }
-    }
+        const file = importImageFileFunc();
+        this.$store.dispatch('importImageFile', file);
+      },
+    },
   }
 </script>
 
 <style>
   #top-bar {
+    background-color: #3e3e3e;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 60px;
     width: 100%;
   }
 </style>
