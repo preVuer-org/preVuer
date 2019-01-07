@@ -99,7 +99,10 @@
 
 <style>
   #center-canvas{
-    margin: 25px;
+    border: 1px solid #3e3e3e;
+    border-radius: 5px;
+    margin-top: 15px;
+    height: 100%;
   }
 </style>
 

@@ -1,6 +1,7 @@
 import getColor from '../utils/colors.util';
 import formatTitle from '../utils/formatTitle.util';
 import uniqueNameAlert from '../utils/uniqueNameAlert.util';
+import getUniquePosition from '../utils/getUniquePosition.util'
 
 export default {
   UPDATE_TEXT: (state, payload) => {
@@ -23,13 +24,22 @@ export default {
     if (!uniqueName) {
       return;
     }
-    const newColor = getColor();
+    // color assignment
+    if (state.usedColors.length > 9) {
+      state.usedColors = [];
+    }
+    const newColor = getColor(state.usedColors);
+    // get unique position for component render
+    const position = getUniquePosition(state.components);
+    const [ x, y ] = position;
     // Generate new component
     const newComponent = {
       ...state.component.newComponent,
       title: formattedTitle,
       id: state.nextId.toString(),
       fill: newColor,
+      x,
+      y
     };
     // Update state
     state.components.push(newComponent);
@@ -37,6 +47,7 @@ export default {
     state.totalComponents += 1;
     state.nextId += 1;
     state.currentText = '';
+    state.usedColors.push(newColor);
   },
   DELETE_COMPONENT: (state, payload) => {
     let target;
@@ -53,6 +64,7 @@ export default {
       }
     });
     state.components.splice(target, 1);
+    state.totalComponents -= 1;
   },
   // Initializing a Konva rectangle
   DRAW_BOX: (state) => {
@@ -75,10 +87,12 @@ export default {
     state.totalComponents = 0;
     state.components = [];
     state.focusComponent = {};
+    state.usedColors = [];
   },
   CHANGE_PARENT: (state, payload) => {
     // payload[0] is childId, payload[1] is parentId
     // convert parentTitle to parentId
+    
     const childId = payload[0];
     let parentId;
     state.components.forEach((component) => {
@@ -112,5 +126,14 @@ export default {
         component.childrenIds = children;
       }
     });
+  },
+  CHANGE_COLOR : (state, payload) => {
+    const [ componentId, color ] = payload;
+
+    state.components.forEach(component => {
+      if (component.id === componentId) {
+        component.fill = color;
+      }
+    })
   }
 };

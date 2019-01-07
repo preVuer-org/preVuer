@@ -4,6 +4,13 @@
       <p id="component-item-title">{{ component.title }}</p>
     </div>
     <div id="component-details">
+      <input
+        :id="component.id"       
+        type='color'
+        :value="component.fill"
+        @change="changeColor"
+        class="chooseColor"
+      />
       <p id="parent-menu-label">Parent</p>
       <select 
         @change="changeParent" 
@@ -37,14 +44,20 @@
         transformerNode.detach();
         // Redraw layer
         transformerNode.getLayer().batchDraw();       
-         
+        
         this.$store.dispatch('deleteComponent', e.target.id)
       },
       changeParent(e) {
         const component = e.target.id;
         const parent = e.target.value;
+        console.log(component, parent);
         this.$store.dispatch('changeParent', [component, parent]);
       },
+      changeColor(e) {
+        const component = e.target.id;
+        const color = e.target.value;
+        this.$store.dispatch('changeColor', [component, color])
+      }
     },
     computed: {
       getParents() {
@@ -69,5 +82,8 @@
   }
   #parent-menu-label{
     margin: 0 5px 0 0;
+  }
+  .chooseColor {
+    border: none
   }
 </style>
