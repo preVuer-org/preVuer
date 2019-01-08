@@ -37,19 +37,20 @@ export default {
     margin-top: 20px;
     padding: 20px;
     height: 100%;
-    width: 25%;
+    min-width: 285px;
+    width: 20%;
   }
   #center-container {
     padding: 20px;
     height: 800px;
-    width: 55%;
+    width: 60%;
   }
   #right-container {
     background-color: #3e3e3e;
     border-radius: 5px;
     height: 800px;
-    margin-top: 20px;
-    padding: 20px;
+    margin: 20px 0;
+    padding: 0 20px 20px 20px;
     height: 100%;
     width: 20%;
   }
