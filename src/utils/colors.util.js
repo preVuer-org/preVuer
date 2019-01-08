@@ -19,6 +19,16 @@ const colors = [
 /**
  * getColor randomizes color and assigns to default component
  */
-const getColor = () => colors[Math.floor(Math.random() * colors.length)];
+const getColor = (usedColors) => {
+  const availableColors = colors.filter(color => {
+    return !usedColors.includes(color);
+  });
+  
+  return availableColors[Math.floor(Math.random() * colors.length)]
+}
+
+
+
+;
 
 export default getColor;

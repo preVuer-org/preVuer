@@ -23,19 +23,20 @@ export default {
 
 <style>
   .main-container {
-    padding: 20px;
+    padding: 30px;
     position: relative;
     display: flex;
     flex-direction: row;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
   }
 
   #left-container {
-    background-color: #4b4b4b;
-    margin-top: 30px;
+    background-color: #3e3e3e;
+    border-radius: 5px;
+    margin-top: 20px;
     padding: 20px;
-    height: 800px;
+    height: 100%;
     width: 25%;
   }
   #center-container {
@@ -45,11 +46,11 @@ export default {
   }
   #right-container {
     background-color: #3e3e3e;
+    border-radius: 5px;
     height: 800px;
-    margin-top: 30px;
-    margin-left: 10px;
+    margin-top: 20px;
     padding: 20px;
-    height: 800px;
+    height: 100%;
     width: 20%;
   }
 </style>
