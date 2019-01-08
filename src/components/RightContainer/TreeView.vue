@@ -1,23 +1,22 @@
 <template>
   <div>
-    <p>Hierarchy</p>
+    <p id="tree-view-header" class="md-title">Component Tree</p>
     <vue-nestable 
       v-model="nestableItems"
     >
       <div slot="placeholder" />
       <vue-nestable-handle
         slot-scope="{ item }"
-        :item="item">
+        :item="item"
+      >
+        <i class="fas fa-user" />
         {{ item.text }}
       </vue-nestable-handle>
     </vue-nestable>
   </div>
-
 </template>
 
 <script>
-  import SortableTree from 'vue-sortable-tree';
-
   export default {
     name: 'tree-view',
     computed: {
@@ -29,6 +28,9 @@
 </script>
 
 <style>
+#tree-view-header {
+  text-align: center;
+}
 .nestable {
   position: relative;
 }

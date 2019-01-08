@@ -35,7 +35,7 @@ export default {
     background-color: #3e3e3e;
     border-radius: 5px;
     margin-top: 20px;
-    padding: 20px;
+    padding: 12px;
     height: 100%;
     width: 25%;
   }
@@ -49,7 +49,7 @@ export default {
     border-radius: 5px;
     height: 800px;
     margin-top: 20px;
-    padding: 20px;
+    padding: 12px;
     height: 100%;
     width: 20%;
   }
