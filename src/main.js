@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueKonva from 'vue-konva';
+import VueNestable from 'vue-nestable';
 
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
@@ -21,6 +22,7 @@ Vue.config.productionTip = false;
 
 Vue.use(VueKonva);
 Vue.use(VueMaterial);
+Vue.use(VueNestable);
 
 new Vue({
   store,

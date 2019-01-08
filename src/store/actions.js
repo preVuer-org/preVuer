@@ -20,4 +20,7 @@ export default {
   changeParent({ commit }, payload) {
     commit('CHANGE_PARENT', payload);
   },
+  changeColor({ commit }, payload) {
+    commit('CHANGE_COLOR', payload);
+  }
 };

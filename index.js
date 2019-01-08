@@ -5,7 +5,7 @@ let win;
 
 async function createWindow() {
 
-  win = new BrowserWindow({ width: 1800, height: 800 });
+  win = new BrowserWindow({ width: 1800, height: 1000 });
   // wait for vue dev tools to install before loading index.html
   await installExtension(VUEJS_DEVTOOLS)
     .then((name) => console.log(`Added Extension:  ${name}`))
