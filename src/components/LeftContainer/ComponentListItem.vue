@@ -28,14 +28,19 @@
       <button 
         :id="component.id" 
         @click="deleteComponent"
-      >delete</button>
+      ><delete-icon /></button>
     </div>
   </div>
 </template>
 
 <script>
+  import DeleteIcon from "vue-material-design-icons/Delete.vue";
+
   export default {
     name: 'component-list-item',
+    components: {
+      DeleteIcon
+    },
     props: ['component', 'parent.title', 'parent.id'],
     methods: {
       deleteComponent(e) {
@@ -72,6 +77,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 5px 0;
   }
   #component-details {
     display: flex;
@@ -84,6 +90,11 @@
     margin: 0 5px 0 0;
   }
   .chooseColor {
-    border: none
+    height: 20px;
+    width: 40px;
+    border: none;
+    padding: 0px;
+    margin-right: 8px;
+    background-color: transparent;
   }
 </style>
