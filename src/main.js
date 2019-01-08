@@ -6,6 +6,8 @@ import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/black-green-dark.css';
 
+import "vue-material-design-icons/styles.css";
+
 // @import '~vue-material/dist/theme/engine';
 
 // @include md-register-theme('default', (

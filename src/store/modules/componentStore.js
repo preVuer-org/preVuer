@@ -15,7 +15,7 @@ const componentStore = new Vuex.Store({
       y: null,
       height: 50,
       width: 50,
-      stroke: 'black',
+      stroke: '#646464',
       strokeWidth: 1.5,
       strokeScaleEnabled: false,
       draggable: true,
