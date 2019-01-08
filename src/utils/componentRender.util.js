@@ -1,6 +1,4 @@
-const formatCamelCaseToDash = (string) => {
-  return string.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
-};
+const formatCamelCaseToDash = string => string.replace(/([a-zA-Z])(?=[A-Z])/g, '$1-').toLowerCase();
 
 const componentRender = (component, state) => {
   // grab title and children array from component

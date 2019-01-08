@@ -1,11 +1,11 @@
-import Vuex from 'vuex'
-import VueMaterial from 'vue-material'
-import { mount, createLocalVue } from '@vue/test-utils'
-import LeftContainer from '@/containers/LeftContainer.vue'
+import Vuex from 'vuex';
+import VueMaterial from 'vue-material';
+import { mount, createLocalVue } from '@vue/test-utils';
+import LeftContainer from '@/containers/LeftContainer.vue';
 
-const localVue = createLocalVue()
-localVue.use(Vuex)
-localVue.use(VueMaterial)
+const localVue = createLocalVue();
+localVue.use(Vuex);
+localVue.use(VueMaterial);
 
 // const mutations = {
 //   addComponent: jest.fn(),
@@ -17,14 +17,13 @@ const store = new Vuex.Store({
   getters: {
     getCurrentText: () => 'CurrentText from localVuexStoreGetters'
   }
-})
+});
 
 describe('LeftContainer', () => {
   const wrapper = mount(LeftContainer, {
     store,
     localVue
   });
-  
   // console.log(wrapper.html());
   it('renders md-input with the correct text using localVuexStore', () => {
     expect(wrapper.find('#component-input').html().includes('<md-input value="Currenttext from localVuexStoreGetters"></md-input>'));
@@ -35,5 +34,4 @@ describe('LeftContainer', () => {
   //   // console.log(wrapper.find('#addComponent'));
   //   // expect(mutations.addComponent).toHaveBeenCalled()
   // })
-
-})
+});

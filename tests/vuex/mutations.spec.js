@@ -13,6 +13,7 @@ describe('Mutation functionalities', () => {
       components: [],
       imagePath: '',
       component: newComponent,
+      usedColors: [],
     };
     return state;
   }
@@ -81,10 +82,6 @@ describe('Mutation functionalities', () => {
       nextId: 2,
       totalComponents: 1,
       components: [{ id: '1', title: 'Testing' }],
-      component: {
-        id: null,
-        title: null,
-      }
     };
     mutations.ADD_COMPONENT(state);
     expect(state).toMatchObject(result);
@@ -94,13 +91,7 @@ describe('Mutation functionalities', () => {
     state.currentText = 'testing123';
     const result = {
       currentText: '',
-      nextId: 2,
-      totalComponents: 1,
       components: [{ id: '1', title: 'Testing' }],
-      component: {
-        id: null,
-        title: null,
-      },
     };
     mutations.ADD_COMPONENT(state);
     expect(state).toMatchObject(result);
@@ -113,14 +104,9 @@ describe('Mutation functionalities', () => {
     state.components = [{ id: '1', title: 'One' }, { id: '2', title: 'Two' }];
     payload = '2';
     const result = {
-      currentText: '',
       nextId: 3,
       totalComponents: 1,
       components: [{ id: '1', title: 'One' }],
-      component: {
-        id: null,
-        title: null,
-      },
     };
     mutations.DELETE_COMPONENT(state, payload);
     expect(state).toMatchObject(result);
@@ -142,6 +128,7 @@ describe('Mutation functionalities', () => {
       components: [],
       imagePath: '',
       component: newComponent,
+      usedColors: [],
     };
     mutations.CLEAR_WORKSPACE(state);
     expect(state).toMatchObject(result);
@@ -155,19 +142,12 @@ describe('Mutation functionalities', () => {
       { id: '2', title: 'World', childrenIds: [], parentId: null, },
       { id: '3', title: 'Test', childrenIds: [], parentId: null, },
     ];
-    state.nextId = 4;
-    state.totalComponents = 3;
     const result = {
-      currentText: '',
-      nextId: 4,
-      totalComponents: 3,
       components: [
         { id: '1', title: 'Hello', childrenIds: ['2'], parentId: null, },
         { id: '2', title: 'World', childrenIds: [], parentId: 1, },
         { id: '3', title: 'Test', childrenIds: [], parentId: null, },
       ],
-      imagePath: '',
-      component: newComponent,
     };
     mutations.CHANGE_PARENT(state, payload);
     expect(state).toMatchObject(result);
@@ -180,21 +160,33 @@ describe('Mutation functionalities', () => {
       { id: '2', title: 'World', childrenIds: [], parentId: 1, },
       { id: '3', title: 'Test', childrenIds: [], parentId: null, },
     ];
-    state.nextId = 4;
-    state.totalComponents = 3;
     const result = {
-      currentText: '',
-      nextId: 4,
-      totalComponents: 3,
       components: [
         { id: '1', title: 'Hello', childrenIds: [], parentId: null, },
         { id: '2', title: 'World', childrenIds: [], parentId: null, },
         { id: '3', title: 'Test', childrenIds: [], parentId: null, },
       ],
-      imagePath: '',
-      component: newComponent,
     };
     mutations.CHANGE_PARENT(state, payload);
+    expect(state).toMatchObject(result);
+  });
+
+  // change the color of each component
+  test('CHANGE_COLOR should change a component`s color', () => {
+    payload = ['2', 'green'];
+    state.components = [
+      { id: '1', title: 'Hello', fill: 'red' },
+      { id: '2', title: 'World', fill: 'red' },
+      { id: '3', title: 'Test', fill: 'blue' },
+    ];
+    const result = {
+      components: [
+        { id: '1', title: 'Hello', fill: 'red' },
+        { id: '2', title: 'World', fill: 'green' },
+        { id: '3', title: 'Test', fill: 'blue' },
+      ],
+    };
+    mutations.CHANGE_COLOR(state, payload);
     expect(state).toMatchObject(result);
   });
 });
