@@ -10,14 +10,15 @@
         ></md-input>
         <span class="md-helper-text md-accent">Add a new component</span>
       </md-field>
-    </div>
       <md-button 
-        id="addComponent" 
+        id="add-component" 
         class="md-icon-button md-raised md-accent" 
         @click="addComponent"
       >
         <md-icon>+</md-icon>
       </md-button>
+    </div>
+
     <component-list />
     <div id="clear-workspace-container">
       <md-button 
@@ -76,6 +77,7 @@
   #input-text-button-pair{
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
   #clear-workspace-container{
     display: flex;
@@ -83,5 +85,10 @@
   }
   #clear-workspace {
     margin-top: 80px;
+  }
+  #add-component {
+    margin-left: 10px;
+    padding-bottom: 8px;
+    border: none;
   }
 </style>

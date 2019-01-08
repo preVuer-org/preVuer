@@ -30,6 +30,7 @@
 <style>
 #tree-view-header {
   text-align: center;
+  margin: none;
 }
 .nestable {
   position: relative;
