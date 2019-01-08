@@ -1,7 +1,7 @@
 import getColor from '../utils/colors.util';
 import formatTitle from '../utils/formatTitle.util';
 import uniqueNameAlert from '../utils/uniqueNameAlert.util';
-import getUniquePosition from '../utils/getUniquePosition.util'
+import getUniquePosition from '../utils/getUniquePosition.util';
 
 export default {
   UPDATE_TEXT: (state, payload) => {
@@ -31,7 +31,7 @@ export default {
     const newColor = getColor(state.usedColors);
     // get unique position for component render
     const position = getUniquePosition(state.components);
-    const [ x, y ] = position;
+    const [x, y] = position;
     // Generate new component
     const newComponent = {
       ...state.component.newComponent,
@@ -127,13 +127,12 @@ export default {
       }
     });
   },
-  CHANGE_COLOR : (state, payload) => {
-    const [ componentId, color ] = payload;
-
-    state.components.forEach(component => {
+  CHANGE_COLOR: (state, payload) => {
+    const [componentId, color] = payload;
+    state.components.forEach((component) => {
       if (component.id === componentId) {
         component.fill = color;
       }
-    })
-  }
+    });
+  },
 };

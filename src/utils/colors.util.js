@@ -27,5 +27,4 @@ const getColor = (usedColors) => {
   return availableColors[Math.floor(Math.random() * colors.length)];
 }
 
-
 export default getColor;

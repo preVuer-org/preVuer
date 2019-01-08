@@ -1,11 +1,10 @@
-
 const unflatten = (components) => {
   // formats components into data-structure readable by tree plug-in
   const arr = components.reduce((accum, component) => {
     const { id, parentId, title } = component;
-    accum.push({ id, parentId, 'text': title})
+    accum.push({ id, parentId, text: title });
     return accum;
-  },[])
+  }, []);
 
   const tree = [];
   const mappedArr = {};
@@ -13,13 +12,13 @@ const unflatten = (components) => {
   let mappedElem;
 
   // First map the nodes of the array to an object -> create a hash table.
-  for(let i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     arrElem = arr[i];
     mappedArr[arrElem.id] = arrElem;
     mappedArr[arrElem.id]['children'] = [];
   }
 
-  for (var id in mappedArr) {
+  for (let id in mappedArr) {
     if (mappedArr.hasOwnProperty(id)) {
       mappedElem = mappedArr[id];
       // If the element is not at the root level, add it to its parent array of children.
@@ -33,6 +32,6 @@ const unflatten = (components) => {
     }
   }
   return tree;
-}
+};
 
 export default unflatten;
