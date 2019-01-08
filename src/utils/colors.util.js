@@ -24,11 +24,8 @@ const getColor = (usedColors) => {
     return !usedColors.includes(color);
   });
   
-  return availableColors[Math.floor(Math.random() * colors.length)]
+  return availableColors[Math.floor(Math.random() * colors.length)];
 }
 
-
-
-;
 
 export default getColor;
