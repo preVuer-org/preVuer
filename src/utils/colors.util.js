@@ -16,9 +16,13 @@ const colors = [
   '#F50057',
   '#D500F9',
 ];
+
 /**
- * getColor randomizes color and assigns to default component
+ * Returns a random color string from the list of unused colors
+ * @param { Array } usedColors - all taken colors
+ * @returns { String } "#color"
  */
+
 const getColor = (usedColors) => {
   const availableColors = colors.filter(color => !usedColors.includes(color));
   return availableColors[Math.floor(Math.random() * colors.length)];

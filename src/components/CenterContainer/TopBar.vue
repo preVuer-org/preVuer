@@ -12,9 +12,11 @@ import importImageFileFunc from '../../utils/importImageFile.util.js';
   export default {
     name: 'top-bar',
     methods: {
+      // runs electron function to create .vue files from components array in state
       createFiles() {
         createFilesFunc(this.$store.state.components);
       },
+      // electron function to grab the image path from local machine
       importImageFile() {
         const file = importImageFileFunc();
         this.$store.dispatch('importImageFile', file);

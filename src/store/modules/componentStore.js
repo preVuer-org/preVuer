@@ -11,6 +11,7 @@ const componentStore = new Vuex.Store({
       parentId: null,
       parentTitle: 'none',
       childrenIds: [],
+      // konva attributes below here
       x: null,
       y: null,
       height: 50,
@@ -21,8 +22,8 @@ const componentStore = new Vuex.Store({
       draggable: true,
       opacity: 0.5,
       fill: 'blue',
-    }
-  }
+    },
+  },
 });
 
 export default componentStore;
