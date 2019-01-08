@@ -6,13 +6,14 @@
           image: mockImg || image
         }"/>
     </v-layer>
-    <v-layer ref="layer">
-      <v-rect
+    <v-layer ref="layer"  >
+      <v-rect 
         v-for="rect in rectangles"
         :key="rect.id"
         :config="rect"
         @mouseover="onMouseOver"
         @mouseout="onMouseOut"
+        
       ></v-rect>
       
       <v-transformer ref="transformer" :config="trConfig"></v-transformer>
@@ -47,10 +48,11 @@
       handleStageMouseDown(e) {        
         // Grab transformer
         const transformerNode = this.$refs.transformer.getStage();       
+    
         // Clicked on the stage -> Clear Transformer Selection
         if (e.target === e.target.getStage()) {          
           // Remove transfomer
-          transformerNode.detach(); // Add check if it is attached
+          transformerNode.detach();
           // Redraw layer
           transformerNode.getLayer().batchDraw();       
         } else {
@@ -77,7 +79,7 @@
           // Redraw layer
           transformerNode.getLayer().batchDraw();
         }
-      },
+      }
     },
     computed: {
       rectangles(){
@@ -97,7 +99,10 @@
 
 <style>
   #center-canvas{
-    margin: 25px;
+    border: 1px solid #3e3e3e;
+    border-radius: 5px;
+    margin-top: 15px;
+    height: 100%;
   }
 </style>
 
