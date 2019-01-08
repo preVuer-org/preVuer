@@ -7,14 +7,13 @@
         }"/>
     </v-layer>
     <v-layer ref="layer">
-      <v-rect
+      <v-rect 
         v-for="rect in rectangles"
         :key="rect.id"
         :config="rect"
         @mouseover="onMouseOver"
         @mouseout="onMouseOut"
       ></v-rect>
-      
       <v-transformer ref="transformer" :config="trConfig"></v-transformer>
     </v-layer>
     </v-stage>
@@ -44,15 +43,15 @@
       onMouseOut() {
         document.body.style.cursor = 'default';
       },
-      handleStageMouseDown(e) {        
+      handleStageMouseDown(e) {
         // Grab transformer
-        const transformerNode = this.$refs.transformer.getStage();       
+        const transformerNode = this.$refs.transformer.getStage();
         // Clicked on the stage -> Clear Transformer Selection
-        if (e.target === e.target.getStage()) {          
+        if (e.target === e.target.getStage()) {
           // Remove transfomer
-          transformerNode.detach(); // Add check if it is attached
+          transformerNode.detach();
           // Redraw layer
-          transformerNode.getLayer().batchDraw();       
+          transformerNode.getLayer().batchDraw();
         } else {
           // Clicked on transformer -> Do nothing
           if (e.target.getParent().className === 'Transformer') {
@@ -60,7 +59,7 @@
             return;
           }
           // Do nothing if transfomer already attached to rectangle
-          if (e.target === transformerNode.node()) { 
+          if (e.target === transformerNode.node()) {
           // eslint-disable-next-line no-useless-return
             return;
           }
@@ -77,11 +76,11 @@
           // Redraw layer
           transformerNode.getLayer().batchDraw();
         }
-      },
+      }
     },
     computed: {
       rectangles(){
-        return this.$store.state.components
+        return this.$store.state.components;
       },
       mockImg(){
         const image = new window.Image();
@@ -97,7 +96,9 @@
 
 <style>
   #center-canvas{
-    margin: 25px;
+    border: 1px solid #3e3e3e;
+    border-radius: 5px;
+    margin-top: 15px;
+    height: 100%;
   }
 </style>
-

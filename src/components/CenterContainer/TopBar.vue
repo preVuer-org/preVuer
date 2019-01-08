@@ -25,10 +25,12 @@ import importImageFileFunc from '../../utils/importImageFile.util.js';
 
 <style>
   #top-bar {
+    background-color: #3e3e3e;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 65px;
     width: 100%;
   }
 </style>
