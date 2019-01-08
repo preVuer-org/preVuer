@@ -53,6 +53,7 @@ export default {
       }
     });
     state.components.splice(target, 1);
+    state.totalComponents -= 1;
   },
   // Initializing a Konva rectangle
   DRAW_BOX: (state) => {
