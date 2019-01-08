@@ -30,7 +30,7 @@ import importImageFileFunc from '../../utils/importImageFile.util.js';
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 65px;
     width: 100%;
   }
 </style>

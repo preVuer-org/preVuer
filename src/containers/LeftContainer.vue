@@ -19,11 +19,13 @@
         <md-icon>+</md-icon>
       </md-button>
     <component-list />
-    <md-button 
-      id="clear-workspace" 
-      class="md-raised md-primary md-accent" 
-      @click="clearWorkspace"
-    >Clear Workspace</md-button>
+    <div id="clear-workspace-container">
+      <md-button 
+        id="clear-workspace" 
+        class="md-raised md-primary md-accent" 
+        @click="clearWorkspace"
+      >Clear Workspace</md-button>
+    </div>
   </div>
 </template>
 
@@ -74,6 +76,10 @@
   #input-text-button-pair{
     display: flex;
     flex-direction: row;
+  }
+  #clear-workspace-container{
+    display: flex;
+    justify-content: center;
   }
   #clear-workspace {
     margin-top: 40px;
