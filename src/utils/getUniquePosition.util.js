@@ -1,21 +1,19 @@
 const generateOffsetPositions = () => {
   let count = 25;
-  let output = [];
+  const output = [];
   for (let i = 0; i < 25; i++) {
     output.push([count, count]);
-    count += 10
+    count += 10;
   }
   return output;
-}
+};
 
 
 const getUniquePosition = (components) => {
   // get position options for new component
   const offsetPositions = generateOffsetPositions();
   // get an array of current positions
-  const currentPositions = components.map(component => { 
-    return component.x
-  })
+  const currentPositions = components.map(component => component.x);
   let position;
 
   if (currentPositions.length === 0) return offsetPositions[0];
@@ -27,6 +25,6 @@ const getUniquePosition = (components) => {
     }
   }
   return position;
-}
+};
 
 export default getUniquePosition;

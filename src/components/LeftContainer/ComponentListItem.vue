@@ -5,7 +5,7 @@
     </div>
     <div id="component-details">
       <input
-        :id="component.id"       
+        :id="component.id"
         type='color'
         :value="component.fill"
         @change="changeColor"
@@ -48,7 +48,7 @@
         // Remove transfomer which otherwise will be left on the stage
         transformerNode.detach();
         // Redraw layer
-        transformerNode.getLayer().batchDraw();       
+        transformerNode.getLayer().batchDraw();
         
         this.$store.dispatch('deleteComponent', e.target.id)
       },
