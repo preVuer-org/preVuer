@@ -10,13 +10,12 @@ const generateOffsetPositions = () => {
 
 
 const getUniquePosition = (components) => {
-
+  // get position options for new component
   const offsetPositions = generateOffsetPositions();
-
+  // get an array of current positions
   const currentPositions = components.map(component => { 
     return component.x
   })
-  console.log('currentPositions: ', currentPositions, 'offsetPositions: ', offsetPositions);
   let position;
 
   if (currentPositions.length === 0) return offsetPositions[0];
