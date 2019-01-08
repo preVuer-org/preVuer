@@ -1,18 +1,31 @@
 <template>
   <div class="container" id="left-container">
-    <label for="input-text">Add a new component</label>
-    <br>
-    <input 
-      id="input-text" 
-      type="text" 
-      placeholder="enter component name" 
-      @change="updateText"
-      @keyup.enter="addComponent" 
-      :value="currentText"
-    />
-    <button @click="addComponent">submit</button>
+    <div id="input-text-button-pair">
+      <md-field id="component-input">
+        <label>enter component name</label>
+        <md-input
+          @change="updateText"
+          @keyup.enter="addComponent" 
+          :value="currentText" 
+        ></md-input>
+        <span class="md-helper-text md-accent">Add a new component</span>
+      </md-field>
+    </div>
+      <md-button 
+        id="addComponent" 
+        class="md-icon-button md-raised md-accent" 
+        @click="addComponent"
+      >
+        <md-icon>+</md-icon>
+      </md-button>
     <component-list />
-    <button @click="clearWorkspace">Clear Workspace</button>
+    <div id="clear-workspace-container">
+      <md-button 
+        id="clear-workspace" 
+        class="md-raised md-primary md-accent" 
+        @click="clearWorkspace"
+      >Clear Workspace</md-button>
+    </div>
   </div>
 </template>
 
@@ -41,22 +54,34 @@
           buttons: ['Yes', 'Cancel'],
           message: 'Do you want to delete all data?'
         }
-
         let response = dialog.showMessageBox(options)
-
+        
         if (response === 0) {
           this.$store.dispatch('clearWorkspace');
         }    
-      }
+      },
     },
     computed: {
       currentText() {
-        return this.$store.getters.getCurrentText
-      }
-    }
+        return this.$store.getters.getCurrentText;
+      },
+    },
   }
 </script>
 
 <style>
-
+  #component-input {
+    width: 75%;
+  }
+  #input-text-button-pair{
+    display: flex;
+    flex-direction: row;
+  }
+  #clear-workspace-container{
+    display: flex;
+    justify-content: center;
+  }
+  #clear-workspace {
+    margin-top: 80px;
+  }
 </style>

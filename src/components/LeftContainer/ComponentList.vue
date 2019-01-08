@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="component-list">
     <component-list-item 
       v-for="(component, index) in getComponents" 
       :component="component" 
@@ -11,6 +11,7 @@
 
 <script>
   import ComponentListItem from './ComponentListItem.vue';
+
   export default {
     name: 'component-list',
     components: {
@@ -18,12 +19,14 @@
     },
     computed: {
       getComponents() {
-        return this.$store.getters.GET_COMPONENTS;
-      }
-    }
+        return this.$store.getters.getComponents;
+      },
+    },
   }
 </script>
 
-<style>
-
+<style> 
+  #component-list{
+    margin-top: 20px;
+  }
 </style>

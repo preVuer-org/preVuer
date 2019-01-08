@@ -1,35 +1,36 @@
 <template>
   <div id="top-bar">
-    <button id="import-image-file" @click="importImageFile">Import Image File</button>
-    <button id="export-components" @click="createFiles">Export Components</button>
+    <md-button id="import-image-file" class="md-raised md-primary md-accent" @click="importImageFile">Import Image File</md-button>
+    <md-button id="export-components" class="md-raised md-primary md-accent" @click="createFiles">Export Components</md-button>
   </div>
 </template>
 
 <script>
-import createFilesFunc from '../../utils/createFiles.util.js'
-import importImageFileFunc from '../../utils/importImageFile.util.js'
+import createFilesFunc from '../../utils/createFiles.util.js';
+import importImageFileFunc from '../../utils/importImageFile.util.js';
 
   export default {
     name: 'top-bar',
     methods: {
       createFiles() {
-        createFilesFunc(this.$store.state.components)
+        createFilesFunc(this.$store.state.components);
       },
       importImageFile() {
-        const file = importImageFileFunc()
-        this.$store.dispatch('importImageFile', file)
-      }
-    }
+        const file = importImageFileFunc();
+        this.$store.dispatch('importImageFile', file);
+      },
+    },
   }
 </script>
 
 <style>
   #top-bar {
-    background-color: #252526;
+    background-color: #3e3e3e;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
+    height: 65px;
     width: 100%;
   }
 </style>

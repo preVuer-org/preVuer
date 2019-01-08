@@ -1,4 +1,7 @@
+import unflatten from '../utils/unflatten.util'
+
 export default {
-  GET_COMPONENTS: state => state.components,
-  GET_CURRENT_TEXT: state => state.currentText
+  getComponents: state => state.components,
+  getCurrentText: state => state.currentText,
+  getNestableItems: state => unflatten(state.components)
 };

@@ -9,19 +9,22 @@ import componentStore from './modules/componentStore';
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     currentText: '',
     nextId: 1,
     totalComponents: 0,
     components: [],
     focusComponent: {},
-    imagePath: ''
+    imagePath: '',
+    usedColors: []
   },
   getters,
   mutations,
   actions,
   modules: {
     component: componentStore,
-  }
+  },
 });
+
+export default store;
