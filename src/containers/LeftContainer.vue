@@ -41,6 +41,7 @@
     },
     methods: {
       addComponent(e) {
+        // dispatch to add the component to state first, then draw the box
         this.$store.dispatch('addComponent');
         this.$store.dispatch('drawBox');
       },
@@ -50,15 +51,16 @@
         e.target.value = '';
       },
       clearWorkspace() {
+        // options = buttons for electron dialog box
         const options = {
           buttons: ['Yes', 'Cancel'],
           message: 'Do you want to delete all data?'
         }
+        // ask user in a popup alert box to see if they really want to clear their workspace
         let response = dialog.showMessageBox(options)
-        
         if (response === 0) {
           this.$store.dispatch('clearWorkspace');
-        }    
+        }
       },
     },
     computed: {
