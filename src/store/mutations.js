@@ -1,22 +1,23 @@
 import getColor from '../utils/colors.util';
 import formatTitle from '../utils/formatTitle.util';
 import uniqueNameAlert from '../utils/uniqueNameAlert.util';
-import getUniquePosition from '../utils/getUniquePosition.util'
+import getUniquePosition from '../utils/getUniquePosition.util';
 
 export default {
   UPDATE_TEXT: (state, payload) => {
-    // Changing a current text in a state
-    // Payload is coming from input field
+    // changing a current text in a state
+    // payload is coming from input field
     state.currentText = payload;
   },
   ADD_COMPONENT: (state) => {
     // fomat component title input
     const formattedTitle = formatTitle(state.currentText);
-    // check if component title already exists. if so, Alert user
+    // check if component title already exists. if so, alert user
     let uniqueName = true;
     state.components.forEach((component) => {
       if (component.title === formattedTitle) {
         uniqueName = false;
+        // electron function to show a popup alert window
         uniqueNameAlert();
       }
     });
@@ -31,8 +32,8 @@ export default {
     const newColor = getColor(state.usedColors);
     // get unique position for component render
     const position = getUniquePosition(state.components);
-    const [ x, y ] = position;
-    // Generate new component
+    const [x, y] = position;
+    // generate new component
     const newComponent = {
       ...state.component.newComponent,
       title: formattedTitle,
@@ -41,12 +42,14 @@ export default {
       x,
       y
     };
-    // Update state
+    // update state
     state.components.push(newComponent);
     state.focusComponent = newComponent;
     state.totalComponents += 1;
     state.nextId += 1;
+    // reset text field for next new component
     state.currentText = '';
+    // put latest color used into usedColors so it can't be called again
     state.usedColors.push(newColor);
   },
   DELETE_COMPONENT: (state, payload) => {
@@ -56,7 +59,6 @@ export default {
         target = index;
       }
     });
-
     state.components.forEach((component) => {
       if (component.parentId === Number(payload)) {
         component.parentId = null;
@@ -66,7 +68,7 @@ export default {
     state.components.splice(target, 1);
     state.totalComponents -= 1;
   },
-  // Initializing a Konva rectangle
+  // initializing a konva rectangle
   DRAW_BOX: (state) => {
     let rect2 = new Konva.Rect({
       x: 250,
@@ -82,6 +84,7 @@ export default {
     state.imagePath = payload;
   },
   CLEAR_WORKSPACE: (state) => {
+    // return to initial sate
     state.currentText = '';
     state.nextId = 1;
     state.totalComponents = 0;
@@ -92,7 +95,6 @@ export default {
   CHANGE_PARENT: (state, payload) => {
     // payload[0] is childId, payload[1] is parentId
     // convert parentTitle to parentId
-    
     const childId = payload[0];
     let parentId;
     state.components.forEach((component) => {
@@ -100,7 +102,6 @@ export default {
         parentId = component.id;
       }
     });
-
     // assign parentId to component, handle 'none' selection
     state.components.forEach((component) => {
       if (component.id === childId) {
@@ -112,7 +113,7 @@ export default {
         }
       }
     });
-    // assign OR re-assign childId to parent's childrenID property (array)
+    // assign OR re-assign childId to parent's childrenIds property (array)
     state.components.forEach((component) => {
       const target = component.childrenIds.indexOf(childId);
       // if child has parent, remove from parent
@@ -127,13 +128,18 @@ export default {
       }
     });
   },
-  CHANGE_COLOR : (state, payload) => {
-    const [ componentId, color ] = payload;
-
-    state.components.forEach(component => {
+  CHANGE_COLOR: (state, payload) => {
+    // find the component in the components array and change the fill color
+    const [componentId, color] = payload;
+    state.components.forEach((component) => {
       if (component.id === componentId) {
         component.fill = color;
       }
-    })
-  }
+    });
+  },
+  CLEAR_IMAGE: (state) => {
+    if (state.imagePath) {
+      state.imagePath = '';
+    }
+  },
 };

@@ -5,13 +5,13 @@
 </template>
 
 <script>
-  import TreeView from '../components/RightContainer/TreeView.vue'
+  import TreeView from '../components/RightContainer/TreeView.vue';
 
   export default {
     name: 'right-container',
     components: {
       TreeView
-    }
+    },
   }
 </script>
 

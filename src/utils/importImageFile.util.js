@@ -12,13 +12,14 @@ const options = {
   filters: types,
   properties: ['openFile'],
 };
+
 /**
  * Opens a dialog to open an image file
- * Returns a file path
+ * @returns { String } file path
  */
+
 const importImageFile = () => {
   const output = dialog.showOpenDialog(options);
-  console.log(output);
   if (output) {
     return output;
   }
