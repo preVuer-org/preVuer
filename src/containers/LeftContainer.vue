@@ -30,7 +30,7 @@
         class="md-raised md-primary md-accent" 
         @click="clearWorkspace"
         v-if="componentsExist > 0"
-      >Clear Workspace</md-button>
+      >Clear All Components</md-button>
       <!-- DISABLED Clear Workspace button -->
       <md-button 
         id="clear-workspace" 
