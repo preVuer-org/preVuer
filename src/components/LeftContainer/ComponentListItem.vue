@@ -4,7 +4,6 @@
       <p id="component-item-title">{{ component.title }}</p>
     </div>
     <div id="component-details">
-
         <input
           :id="component.id"       
           type='color'
@@ -38,7 +37,6 @@
             @click="deleteComponent"
           ></i>
         </button>
-
     </div>
   </div>
 </template>
@@ -55,11 +53,10 @@
     methods: {
       deleteComponent(e) {
         const transformerNode = this.$root.$children[0].$children[1].$children[1].$refs.transformer.getStage();
-        // Remove transfomer which otherwise will be left on the stage
+        // remove transfomer which otherwise will be left on the stage
         transformerNode.detach();
-        // Redraw layer
+        // redraw layer
         transformerNode.getLayer().batchDraw();
-        
         this.$store.dispatch('deleteComponent', e.target.id)
       },
       changeParent(e) {
@@ -74,6 +71,7 @@
       }
     },
     computed: {
+      // grab all components for the parent select options
       getParents() {
         return this.$store.getters.getComponents;
       },

@@ -1,3 +1,9 @@
+/**
+ * Returns an array with objects that have nested objects, represents parent/child relationship
+ * @param { Array } components - all components from state
+ * @returns { Array } an array of objects with nested objects
+ */
+
 const unflatten = (components) => {
   // formats components into data-structure readable by tree plug-in
   const arr = components.reduce((accum, component) => {
@@ -18,7 +24,7 @@ const unflatten = (components) => {
     mappedArr[arrElem.id]['children'] = [];
   }
 
-  for (var id in mappedArr) {
+  for (let id in mappedArr) {
     if (mappedArr.hasOwnProperty(id)) {
       mappedElem = mappedArr[id];
       // If the element is not at the root level, add it to its parent array of children.
