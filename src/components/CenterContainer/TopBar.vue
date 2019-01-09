@@ -1,25 +1,48 @@
 <template>
+  <!-- Top Bar Buttons --> 
   <div id="top-bar">
-    <md-button id="import-image-file" class="md-raised md-primary md-accent" @click="importImageFile">Import Image File</md-button>
-    <md-button id="export-components" class="md-raised md-primary md-accent" @click="createFiles">Export Components</md-button>
+    <!-- Import Image File button -->
+    <md-button 
+      id="import-image-file" 
+      class="md-raised md-primary md-accent" 
+      @click="importImageFile"
+    >Import Image File</md-button>
+    <!-- ENABLED Clear Image button -->
+    <md-button 
+      id="clear-image" 
+      class="md-raised md-primary md-accent" 
+      @click="clearImage" 
+      v-if="imageExists > 0"
+    >Clear Image</md-button>
+    <!-- DISABLED Clear Image button -->
+    <md-button 
+      id="clear-image" 
+      class="md-raised md-primary md-accent" 
+      v-else disabled
+    >Clear Image</md-button>
   </div>
 </template>
 
 <script>
-import createFilesFunc from '../../utils/createFiles.util.js';
+
 import importImageFileFunc from '../../utils/importImageFile.util.js';
 
   export default {
     name: 'top-bar',
     methods: {
-      createFiles() {
-        createFilesFunc(this.$store.state.components);
+      clearImage() {
+        this.$store.dispatch('clearImage');
       },
       importImageFile() {
         const file = importImageFileFunc();
         this.$store.dispatch('importImageFile', file);
       },
     },
+    computed: {
+      imageExists() {
+        return this.$store.getters.getImagePath.length;
+      }
+    }
   }
 </script>
 
