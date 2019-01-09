@@ -3,18 +3,15 @@
     <div>
       <p id="tree-view-header" class="md-title">Component Tree</p>
     </div>
+    <!-- Component Tree Visualizer -->
     <div>
       <vue-nestable 
         v-model="nestableItems"
       >
         <div slot="placeholder" />
-        <vue-nestable-handle
-          slot-scope="{ item }"
-          :item="item"
-        >
-          <i class="fas fa-user" />
-          {{ item.text }}
-        </vue-nestable-handle>
+       <span slot-scope="{ item, index }">
+         {{ item.text }}
+      </span>
       </vue-nestable>
     </div>
     <div id="export-components-container">

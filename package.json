@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "electron": "^3.0.13",
+    "font-awesome": "^4.7.0",
     "fs": "0.0.1-security",
     "konva": "^2.6.0",
     "prettier": "^1.15.3",
