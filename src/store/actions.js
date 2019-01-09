@@ -23,4 +23,7 @@ export default {
   changeColor({ commit }, payload) {
     commit('CHANGE_COLOR', payload);
   },
+  clearImage({ commit }) {
+    commit('CLEAR_IMAGE');
+  },
 };

@@ -137,4 +137,9 @@ export default {
       }
     });
   },
+  CLEAR_IMAGE: (state) => {
+    if (state.imagePath) {
+      state.imagePath = '';
+    }
+  },
 };
