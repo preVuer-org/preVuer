@@ -23,26 +23,35 @@ export default {
 
 <style>
   .main-container {
+    padding: 30px;
     position: relative;
     display: flex;
     flex-direction: row;
-    height: 95%;
-    width: 95%;
+    height: 100%;
+    width: 100%;
   }
 
   #left-container {
-    border: 1px black solid;
-    height: 800px;
-    width: 25%;
+    background-color: #3e3e3e;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    height: 100%;
+    min-width: 285px;
+    width: 20%;
   }
   #center-container {
-    border: 1px black solid;
+    padding: 20px;
     height: 800px;
-    width: 50%;
+    width: 60%;
   }
   #right-container {
-    border: 1px black solid;
+    background-color: #3e3e3e;
+    border-radius: 5px;
     height: 800px;
-    width: 25%;
+    margin: 20px 0;
+    padding: 0 20px 20px 20px;
+    height: 100%;
+    width: 20%;
   }
 </style>

@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import getColor from '../../utils/colors.util';
 
 Vue.use(Vuex);
 
@@ -10,16 +9,18 @@ const componentStore = new Vuex.Store({
       id: null,
       title: null,
       parentId: null,
+      parentTitle: 'none',
       childrenIds: [],
-      x: 100,
-      y: 100,
+      x: null,
+      y: null,
       height: 50,
       width: 50,
-      stroke: '#C6FF00',
-      strokeWidth: 3,
+      stroke: '#646464',
+      strokeWidth: 1.5,
       strokeScaleEnabled: false,
       draggable: true,
-      opacity: 0.6
+      opacity: 0.5,
+      fill: 'blue',
     }
   }
 });
