@@ -3,12 +3,4 @@ module.exports = {
     '@vue/app',
     '@babel/preset-env',
   ],
-  "plugins": [
-    [
-      "babel-plugin-root-import",
-      {
-        "rootPathPrefix": "@"
-      }
-    ]
-  ]
 };
