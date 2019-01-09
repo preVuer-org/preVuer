@@ -8,9 +8,9 @@
       <vue-nestable 
         v-model="nestableItems"
       >
-        <div slot="placeholder" />
-       <span slot-scope="{ item, index }">
-         {{ item.text }}
+      <div slot="placeholder" />
+      <span slot-scope="{ item, index }">
+        {{ item.text }}
       </span>
       </vue-nestable>
     </div>
