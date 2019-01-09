@@ -1,10 +1,11 @@
 <template>
   <div id="center-canvas">
-    <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
-    <v-layer ref="imageLayer">
-      <v-image :config="{
-          image: mockImg || image
-        }"/>
+    <div v-if=showStage>
+      <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
+        <v-layer ref="imageLayer">
+        <v-image :config="{
+            image: mockImg || image
+          }"/>
     </v-layer>
     <v-layer ref="layer"  >
       <v-rect 
@@ -13,39 +14,41 @@
         :config="rect"
         @mouseover="onMouseOver"
         @mouseout="onMouseOut"
-        
       ></v-rect>
-      
       <v-transformer ref="transformer" :config="trConfig"></v-transformer>
-    </v-layer>
-    </v-stage>
+      </v-layer>
+      </v-stage>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
     name: 'center-canvas',
+    
     data() {
+      
       return {
+        showStage: false,
         stageConfig: {
-          width: window.innerWidth,
-          height: window.innerHeight,
+          width: 0,
+          height: 0
+        
         },
         trConfig: {
           rotateEnabled: false,
         },
-        //selectedRectId: '',
         image: null,
       };
     },
     methods: {
       onMouseOver() {
-        document.body.style.cursor = 'grabbing';
+       document.body.style.cursor = 'grabbing';
       },
       onMouseOut() {
         document.body.style.cursor = 'default';
       },
-      handleStageMouseDown(e) {        
+      handleStageMouseDown(e) {  
         // Grab transformer
         const transformerNode = this.$refs.transformer.getStage();       
     
@@ -86,15 +89,45 @@
         return this.$store.state.components
       },
       mockImg(){
+        const stageContainer = document.querySelector('#center-canvas');
+        let stageHeight = stageContainer.offsetHeight;
+        let stageWidth = stageContainer.offsetWidth;
+        
         const image = new window.Image();
         image.src = this.$store.state.imagePath;
+        
         image.onload = () => {
+          image.width = stageWidth;
+          image.height = stageHeight;
           this.image = image;
         }
         return image;
       },
     },
+    mounted(){
+      
+      window.addEventListener('load', () => {
+        const stageContainer = document.querySelector('#center-canvas');
+        let stageHeight = stageContainer.offsetHeight;
+        let stageWidth = stageContainer.offsetWidth;
+        
+        this.stageConfig.width = stageWidth;
+        this.stageConfig.height = stageHeight;
+        this.showStage = true;
+        
+      })
+
+      window.addEventListener('resize', () => {
+        console.log('rezied');
+
+      })
+
+      
+
+    }
+    
   };
+  
 </script>
 
 <style>
