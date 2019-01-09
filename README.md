@@ -31,10 +31,9 @@ Once preVuer has opened up, you'll see that it is split up into three sections.
   - As you finish building out the components, you can export the files with the "**Export Components**" button. This will generate a folder and then fill it with all the components you used in prototyping. 
 
 ## Built with
-- Vue
-- Vuex
-- Vue Material
-- Konva/
-- Electron
-- Jest
-- Webpack/Babel
+- [Vue](https://vuejs.org/)
+- [Vuex](https://vuex.vuejs.org/)
+- [Vue Material](https://vuematerial.io/)
+- [KonvaJS/Vue-Konva](https://github.com/konvajs/vue-konva)
+- [Electron](https://electronjs.org/)
+- [Jest](https://jestjs.io/)
