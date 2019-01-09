@@ -1,56 +1,55 @@
 <template>
   <div class="component-list-item">
-    <!-- component title -->
     <div>
-      <p id="component-item-title" class="md-body-1">{{ component.title }}</p>
+      <p id="component-item-title">{{ component.title }}</p>
     </div>
     <div id="component-details">
-      <!-- select color -->
-      <input
-        :id="component.id"
-        type='color'
-        :value="component.fill"
-        @change="changeColor"
-        class="choose-color"
-      />
-      <!-- select parent drop-down -->
-      <!--
+
+        <input
+          :id="component.id"       
+          type='color'
+          :value="component.fill"
+          @change="changeColor"
+          class="change-color"
+        />
+
       <p id="parent-menu-label">Parent</p>
-      -->
-        <md-field>
-          <label for="parent">Parent</label>
-          <md-select
-            name="parent"
-            @change="changeParent" 
+
+        <select
+          class="select"
+          @change="changeParent" 
+          :id="component.id" 
+          v-model="component.parentTitle"
+        >
+          <option>none</option>
+          <option
+            v-for="parent in getParents"
+            v-if="parent.title !== component.title"
+            :value="parent.title"
+            :id="parent.id"
+          > {{ parent.title }} </option>
+        </select>
+
+
+        <button class="delete-button">
+          <i class="fa fa-trash-o" 
+            aria-hidden="true" 
             :id="component.id" 
-            v-model="component.parentTitle"
-          >
-            <md-option>none</md-option>
-            <md-option
-              v-for="parent in getParents"
-              v-if="parent.title !== component.title"
-              :value="parent.title"
-              :id="parent.id"
-            > {{ parent.title }} </md-option>
-          </md-select>
-        </md-field>
-      <!-- delete component button -->
-      <button
-        class="delete-button" 
-        :id="component.id" 
-        @click="deleteComponent"
-      ><delete-icon /></button>
+            @click="deleteComponent"
+          ></i>
+        </button>
+
     </div>
   </div>
 </template>
 
 <script>
-  import DeleteIcon from "vue-material-design-icons/Delete.vue";
+  import DeleteOutlineIcon from "vue-material-design-icons/DeleteOutline.vue";
 
   export default {
     name: 'component-list-item',
     components: {
-      DeleteIcon
+      DeleteOutlineIcon
     },
     props: ['component', 'parent.title', 'parent.id'],
     methods: {
@@ -66,7 +65,6 @@
       changeParent(e) {
         const component = e.target.id;
         const parent = e.target.value;
-        console.log(component, parent);
         this.$store.dispatch('changeParent', [component, parent]);
       },
       changeColor(e) {
@@ -84,19 +82,27 @@
 </script>
 
 <style>
-  .md-field {
-    width: 30%;
+  .select {
+    outline: none;
   }
-  .md-field.md-theme-default {
-    margin: 0;
-    padding: 0;
+  .delete-button {
+    background: none;
+    border: none;
+    outline: none;
+    color: #ff5252;
+    font-size: 20px;
+  }
+  .delete-button:hover {
+    cursor: pointer;
   }
 
   .component-list-item {
     min-width: 50%;
+    height: 30px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 5px 0;
   }
   #component-details {
@@ -111,19 +117,22 @@
   #parent-menu-label {
     margin: 0 5px 0 0;
   }
-  .choose-color {
+  .change-color {
     height: 25px;
     width: 25px;
-    border: none;
+    border: transparent;
+    outline: none;
     border-radius: 10px;
     padding: 0px;
     margin-right: 8px;
     background-color: transparent;
   }
+  .change-color:hover {
+    cursor: pointer;
+  }
+
   .delete-button {
     padding: none;
     margin-left: 5px;
   }
-
-
 </style>
