@@ -25,5 +25,5 @@ export default {
   },
   clearImage({ commit }) {
     commit('CLEAR_IMAGE');
-  }
+  },
 };

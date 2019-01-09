@@ -39,6 +39,7 @@
   export default {
     name: 'tree-view',
     computed: {
+      // returns an array of objects that have nested objects, which represents parent-child relationships
       nestableItems() {
         return this.$store.getters.getNestableItems;
       },
@@ -50,7 +51,7 @@
       createFiles() {
         createFilesFunc(this.$store.state.components);
       }
-    }
+    },
   }
 </script>
 

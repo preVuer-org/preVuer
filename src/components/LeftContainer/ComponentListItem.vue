@@ -14,9 +14,6 @@
         class="choose-color"
       />
       <!-- select parent drop-down -->
-      <!--
-      <p id="parent-menu-label">Parent</p>
-      -->
         <md-field>
           <label for="parent">Parent</label>
           <md-select
@@ -26,6 +23,7 @@
             v-model="component.parentTitle"
           >
             <md-option>none</md-option>
+            <!-- all components as options except the current component -->
             <md-option
               v-for="parent in getParents"
               v-if="parent.title !== component.title"
@@ -56,17 +54,15 @@
     methods: {
       deleteComponent(e) {
         const transformerNode = this.$root.$children[0].$children[1].$children[1].$refs.transformer.getStage();
-        // Remove transfomer which otherwise will be left on the stage
+        // remove transfomer which otherwise will be left on the stage
         transformerNode.detach();
-        // Redraw layer
+        // redraw layer
         transformerNode.getLayer().batchDraw();
-        
         this.$store.dispatch('deleteComponent', e.target.id)
       },
       changeParent(e) {
         const component = e.target.id;
         const parent = e.target.value;
-        console.log(component, parent);
         this.$store.dispatch('changeParent', [component, parent]);
       },
       changeColor(e) {
@@ -76,6 +72,7 @@
       }
     },
     computed: {
+      // grab all components for the parent select options
       getParents() {
         return this.$store.getters.getComponents;
       },
