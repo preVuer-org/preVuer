@@ -37,3 +37,10 @@ Once preVuer has opened up, you'll see that it is split up into three sections.
 - [KonvaJS/Vue-Konva](https://github.com/konvajs/vue-konva)
 - [Electron](https://electronjs.org/)
 - [Jest](https://jestjs.io/)
+
+## Contributors
+#### Original developers
+- [Chris F](https://github.com/chrisfranz)
+- [EB](https://github.com/evgenii-codesmith)
+- [Jim Y](https://github.com/orenJim)
+#### Community contributors
