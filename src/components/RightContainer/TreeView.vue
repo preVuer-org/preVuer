@@ -4,12 +4,12 @@
       <p id="tree-view-header" class="md-title">Component Tree</p>
     </div>
     <!-- Component Tree Visualizer -->
-    <div>
+    <div id="tree-container">
       <vue-nestable 
         v-model="nestableItems"
       >
       <div slot="placeholder" />
-      <span slot-scope="{ item, index }">
+      <span id="nest-item" slot-scope="{ item, index }">
         {{ item.text }}
       </span>
       </vue-nestable>
@@ -53,8 +53,18 @@
 
 <style>
   #tree-view-header {
+    color: #E7E7E7;
     text-align: center;
     margin: none;
+  }
+  #tree-container {
+    color: #E7E7E7;
+    font-weight: 500;
+    overflow: scroll;
+    padding-bottom: 0 5px 5px 5px;
+  }
+  #nest-item {
+    padding: 5px 0;
   }
   .nestable {
     position: relative;

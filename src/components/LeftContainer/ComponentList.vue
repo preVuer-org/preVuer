@@ -28,5 +28,7 @@
 <style> 
   #component-list{
     margin-top: 20px;
+    max-height: 580px;
+    overflow: scroll;
   }
 </style>

@@ -21,7 +21,7 @@
       </md-button>
     </div>
     <!-- ComponentList component -->
-    <component-list />
+    <component-list class="component-list" />
 
     <div id="clear-workspace-container">
       <!-- ENABLED Clear Workspace button -->
@@ -90,6 +90,10 @@
 </script>
 
 <style>
+
+  #left-container {
+    max-height: 840px;
+  }
   #component-input {
     width: 75%;
   }
@@ -109,5 +113,8 @@
     margin-left: 10px;
     padding-bottom: 8px;
     border: none;
+  }
+  .component-list {
+    overflow: scroll;
   }
 </style>
