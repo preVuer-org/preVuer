@@ -50,47 +50,45 @@ export default {
     onMouseOut() {
       document.body.style.cursor = "default";
     },
-    methods: {
-      onMouseOver() {
-        document.body.style.cursor = "grabbing";
-      },
-      onMouseOut() {
-        document.body.style.cursor = "default";
-      },
-      handleStageMouseDown(e) {
-        // grab transformer
-        const transformerNode = this.$refs.transformer.getStage();
-        // clicked on the stage -> clear transformer selection
-        if (e.target === e.target.getStage()) {
+    handleStageMouseDown(e) {
+      // grab transformer
+      const transformerNode = this.$refs.transformer.getStage();
+      // clicked on the stage -> clear transformer selection
+      if (e.target === e.target.getStage()) {
+        // remove transfomer
+        transformerNode.detach();
+        // redraw layer
+        transformerNode.getLayer().batchDraw();
+      } else {
+        // clicked on transformer -> do nothing
+        if (e.target.getParent().className === "Transformer") {
+          // eslint-disable-next-line no-useless-return
+          return;
+        }
+        // do nothing if transfomer already attached to rectangle
+        if (e.target === transformerNode.node()) {
+          // eslint-disable-next-line no-useless-return
+          return;
+        }
+        // do nothing if clicked on background image
+        if (e.target.className === "Image") {
           // remove transfomer
           transformerNode.detach();
           // redraw layer
           transformerNode.getLayer().batchDraw();
-        } else {
-          // clicked on transformer -> do nothing
-          if (e.target.getParent().className === "Transformer") {
-            // eslint-disable-next-line no-useless-return
-            return;
-          }
-          // do nothing if transfomer already attached to rectangle
-          if (e.target === transformerNode.node()) {
-            // eslint-disable-next-line no-useless-return
-            return;
-          }
-          // do nothing if clicked on background image
-          if (e.target.className === "Image") {
-            // remove transfomer
-            transformerNode.detach();
-            // redraw layer
-            transformerNode.getLayer().batchDraw();
-            return;
-          }
-          // clicked on rectangle -> attach transfomer to it
-          transformerNode.attachTo(e.target);
-          // redraw layer
-          transformerNode.getLayer().batchDraw();
+          return;
         }
+        // clicked on rectangle -> attach transfomer to it
+        transformerNode.attachTo(e.target);
+        // redraw layer
+        transformerNode.getLayer().batchDraw();
       }
+    }
+  },
+  computed: {
+    // grab all components in state for konva rectangle render in vrect
+    rectangles() {
+      return this.$store.state.components;
     },
     // grabbing the image[path] from state to be set as konva v-image
     mockImg() {
@@ -151,10 +149,10 @@ export default {
 </script>
 
 <style>
-  #center-canvas {
-    border: 1px solid #3e3e3e;
-    border-radius: 5px;
-    margin-top: 15px;
-    height: 100%;
-  }
+#center-canvas {
+  border: 1px solid #3e3e3e;
+  border-radius: 5px;
+  margin-top: 15px;
+  height: 100%;
+}
 </style>
