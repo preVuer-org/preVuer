@@ -37,6 +37,7 @@ export default {
     margin-top: 20px;
     padding: 20px;
     height: 100%;
+    max-height: 840px;
     min-width: 285px;
     width: 20%;
   }
@@ -48,7 +49,7 @@ export default {
   #right-container {
     background-color: #3e3e3e;
     border-radius: 5px;
-    height: 800px;
+    height: 850px;
     margin: 20px 0;
     padding: 0 20px 20px 20px;
     height: 100%;
