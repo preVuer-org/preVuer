@@ -11,7 +11,11 @@
     "start": "electron .",
     "build": "webpack"
   },
-  "author": "Jim Yoon, Evgenii B, Chris Franz",
+  "contributors": [
+    "Chris F (https://github.com/chrisfranz)",
+    "EB (https://github.com/evgenii-codesmith)",
+    "Jim Y (https://github.com/orenJim)"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.2.2",
