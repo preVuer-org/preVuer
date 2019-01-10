@@ -98,17 +98,17 @@ export default {
     // grabbing the image[path] from state to be set as konva v-image
     mockImg() {
       
-      // grab stageContainer div 'center-canvas' offsetHeight and offsetWidth
+      // getting stageContainer div 'center-canvas' offsetHeight and offsetWidth
       const stageContainer = document.querySelector("#center-canvas");
-      const height = stageContainer.offsetHeight;
-      const width = stageContainer.offsetWidth;
+      const imageHeight = stageContainer.offsetHeight;
+      const imageWidth = stageContainer.offsetWidth;
       
       const image = new window.Image();
       image.src = this.$store.state.imagePath;
       
       // resizing image to fit 'center-canvas' size
-      image.width = width;
-      image.height = height;
+      image.height = imageHeight;
+      image.width = imageWidth;
       
       image.onload = () => {
         this.image = image;
