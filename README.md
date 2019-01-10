@@ -1,8 +1,7 @@
 # preVuer
-**preVuer** is a *prototyping tool for Vue developers* to quickly create components from mock images from designers.
+**preVuer** is a *prototyping tool for Vue developers* to quickly create component template files
 
-preVuer allows the developer to visually see how components will be layed out on a website. 
-Once a mock image comes in from the designer, a developer can load the image on our application and start placing Vue components on areas of the webpage image. Afterwards, the developer can export the boxes as individual .vue files.
+preVuer enables developers to translate UI design mock-ups into single-page-applications, visualizing component position and parent/child relationships. Simply import your image, create and customize your components, and export ready-to-use .vue template files.
 
 ## Installation
 *downloadable executable coming soon!*
@@ -17,17 +16,17 @@ npm start
 Once preVuer has opened up, you'll see that it is split up into three sections. 
 
 - **Left Section**: *adding, editing, deleting components*
-  - To create a component, write in the title of your component and click the "**+**" button (or hit enter on your keyboard).
-  - Once the component has been created, you'll notice that an item appears with the component name, a color box, select dropdown and a delete button appears. You'll also see a box appear in the middle section of the application. The item and box directly reflects the component you created! 
-  - With each item/component, you can change the color the of box, select a parent or delete the component itself.
-  - Finally, if you want to start over, you can use the "**Clear Workspace**" button to get rid of all components.
-
+  - To create a component, enter the title of your component and click the "+" button (or hit enter on your keyboard).
+  - Once entered, an item appears in the **Left Section** with the component’s name, a color box, select dropdown, and delete button. A corresponding box appears in the **Middle Section** of the application.
+  - For each *preVuer* component, you can change the color the of box, select a parent or delete the component itself.
+  - If you want to start over, click **Clear All Components** to start again with a clean slate.
+  
 - **Middle Section**: *import image, move and resize Vue component box*
-  - You can import your mock website image through the "**Import Image File**" button at the top. This will open up a dialog box, where you can select the image located in your local machine. To clear the image, use the "**Clear Image**" button.
-  - The main section of the middle is where the Vue component boxes live. You can move and resize the boxes to fit your mock website image. 
+  - Use **Import Image File** to import and display a UI mock-up in the **Middle Section**. Clicking this button will open a dialog box, prompting you to select the image file on your local machine. To clear the image, use the **Clear Image** button.
+  - Use **Export Components** to convert your *preVuer* components into .vue template files. Clicking will open a dialog, prompting you to select an export destination on your local machine. 
 
 - **Right Section**: *component tree, export files*
-  - As you create components and have parent-child relationships on each component, they will be reflected in this section. An easy to understand tree will represent the heirarchy.
+  - The **Component Tree** provides an intuitive representation of parent/child relationships assigned in the **Left Section**. 
   - As you finish building out the components, you can export the files with the "**Export Components**" button. This will generate a folder and then fill it with all the components you used in prototyping. 
 
 ## Built with
