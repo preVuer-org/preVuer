@@ -19,7 +19,7 @@
       <md-button 
         class="md-raised md-primary md-accent"
         @click="createFiles"
-        v-if="componentsExist> 0" 
+        v-if="componentsExist" 
       >Export Components</md-button>
       <!-- DISABLED Export Components button -->
       <md-button 
@@ -36,15 +36,17 @@
   export default {
     name: 'tree-view',
     computed: {
-      // returns an array of objects that have nested objects, which represents parent-child relationships
+      // returns an array of nested objects, representing component hierarchy
       nestableItems() {
         return this.$store.getters.getNestableItems;
       },
+      // returns length of component array, used to conditionally Enable/Disable 'Export Components' button
       componentsExist() {
         return this.$store.getters.getComponents.length
       }
     },
     methods: {
+      // creates and exports .vue template files
       createFiles() {
         createFilesFunc(this.$store.state.components);
       }

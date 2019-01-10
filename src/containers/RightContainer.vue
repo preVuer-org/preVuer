@@ -11,10 +11,6 @@
     name: 'right-container',
     components: {
       TreeView
-    },
+    }
   }
 </script>
-
-<style>
-
-</style>

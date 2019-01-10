@@ -1,5 +1,5 @@
 /**
- * Returns an array with objects that have nested objects, represents parent/child relationship
+ * Returns an array of (nested) objects, represents parent/child relationships, used to construct TreeView
  * @param { Array } components - all components from state
  * @returns { Array } an array of objects with nested objects
  */

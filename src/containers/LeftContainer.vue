@@ -24,14 +24,14 @@
     <component-list class="component-list" />
 
     <div id="clear-workspace-container">
-      <!-- ENABLED Clear Workspace button -->
+      <!-- ENABLED Clear All Components button -->
       <md-button 
         id="clear-workspace" 
         class="md-raised md-primary md-accent" 
         @click="clearAllComponents"
-        v-if="componentsExist > 0"
+        v-if="componentsExist"
       >Clear All Components</md-button>
-      <!-- DISABLED Clear Workspace button -->
+      <!-- DISABLED Clear All Components button -->
       <md-button 
         id="clear-workspace" 
         class="md-raised md-primary md-accent" 
@@ -75,8 +75,7 @@
       currentText() {
         return this.$store.getters.getCurrentText;
       },
-      // returns length of components array from state, 
-      // used for conditional rendering of enabled/disabled buttons
+      // returns length of components array. used to conditionally Enable/Disable 'Clear All Components' button
       componentsExist() {
         return this.$store.getters.getComponents.length
       }
@@ -85,7 +84,6 @@
 </script>
 
 <style>
-
   #left-container {
     max-height: 840px;
   }

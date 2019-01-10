@@ -11,8 +11,8 @@
     <md-button 
       id="clear-image" 
       class="md-raised md-primary md-accent" 
-      @click="clearImage" 
-      v-if="imageExists > 0"
+      @click="clearImage"
+      v-if="imageExists"
     >Clear Image</md-button>
     <!-- DISABLED Clear Image button -->
     <md-button 
@@ -24,15 +24,13 @@
 </template>
 
 <script>
-
-import importImageFileFunc from '../../utils/importImageFile.util.js';
-import clearImageAlert from '../../utils/clearImageAlert.util.js'
-// const { dialog } = require('electron').remote;
+  import importImageFileFunc from '../../utils/importImageFile.util.js';
+  import clearImageAlert from '../../utils/clearImageAlert.util.js'
 
   export default {
     name: 'top-bar',
     methods: {
-      // remove image from konva
+      // removes imported background image from CenterCanvas component
       clearImage() {
         const response = clearImageAlert();
         if (response === 0) {
@@ -46,6 +44,7 @@ import clearImageAlert from '../../utils/clearImageAlert.util.js'
       },
     },
     computed: {
+      // checks if background image exists. accessed to conditionally toggle 'clear image' button from Disabled to Enabled
       imageExists() {
         return this.$store.getters.getImagePath.length;
       }
