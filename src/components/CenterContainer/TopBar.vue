@@ -26,13 +26,18 @@
 <script>
 
 import importImageFileFunc from '../../utils/importImageFile.util.js';
+import clearImageAlert from '../../utils/clearImageAlert.util.js'
+// const { dialog } = require('electron').remote;
 
   export default {
     name: 'top-bar',
     methods: {
       // remove image from konva
       clearImage() {
-        this.$store.dispatch('clearImage');
+        const response = clearImageAlert();
+        if (response === 0) {
+          this.$store.dispatch('clearImage');
+        }
       },
       // electron function to grab the image path from local machine
       importImageFile() {

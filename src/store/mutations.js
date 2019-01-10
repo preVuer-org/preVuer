@@ -83,7 +83,7 @@ export default {
   IMPORT_IMAGE_FILE: (state, payload) => {
     state.imagePath = payload;
   },
-  CLEAR_WORKSPACE: (state) => {
+  CLEAR_ALL_COMPONENTS: (state) => {
     // return to initial sate
     state.currentText = '';
     state.nextId = 1;

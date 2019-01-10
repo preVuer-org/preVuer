@@ -28,7 +28,7 @@
       <md-button 
         id="clear-workspace" 
         class="md-raised md-primary md-accent" 
-        @click="clearWorkspace"
+        @click="clearAllComponents"
         v-if="componentsExist > 0"
       >Clear All Components</md-button>
       <!-- DISABLED Clear Workspace button -->
@@ -43,8 +43,7 @@
 
 <script>
   import ComponentList from '../components/LeftContainer/ComponentList.vue';
-  
-  const { dialog } = require('electron').remote;
+  import clearAllComponentsAlert from '../utils/clearAllComponentsAlert.util.js'
 
   export default {
     name: 'left-container',
@@ -64,18 +63,12 @@
         e.target.value = '';
       },
       // re-initializes application
-      clearWorkspace() {
-        // options = buttons for electron dialog box
-        const options = {
-          buttons: ['Yes', 'Cancel'],
-          message: 'Do you want to delete all data?'
-        }
-        // ask user in a popup alert box to see if they really want to clear their workspace
-        let response = dialog.showMessageBox(options)
+      clearAllComponents() {
+        const response = clearAllComponentsAlert();
         if (response === 0) {
-          this.$store.dispatch('clearWorkspace');
+          this.$store.dispatch('clearAllComponents');
         }
-      },
+      }
     },
     computed: {
       // gets current text of input field from state
