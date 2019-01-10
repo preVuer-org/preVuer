@@ -105,8 +105,7 @@ export default {
   mounted() {
     window.addEventListener("load", () => {
       const stageContainer = document.querySelector("#center-canvas");
-      //const stageHeight = stageContainer.offsetHeight;
-      //const stageWidth = stageContainer.offsetWidth;
+      
       // setting up stage height and width
       this.stageConfig.width = stageContainer.offsetWidth;
       this.stageConfig.height = stageContainer.offsetHeight;
@@ -122,9 +121,6 @@ export default {
 
       const stageContainer = document.querySelector("#center-canvas");
       
-      // const stageHeight = stageContainer.offsetHeight;
-      // const stageWidth = stageContainer.offsetWidth;
-
       actualImg.to({
         width: stageContainer.offsetWidth,
         height: stageContainer.offsetHeight
@@ -135,9 +131,6 @@ export default {
       // residing image to fit stage on resize
       window.addEventListener("resize", () => {
         
-        // const stageHeight = stageContainer.offsetHeight;
-        // const stageWidth = stageContainer.offsetWidth;
-
         stage.to({
           width: stageContainer.offsetWidth,
           height: stageContainer.offsetHeight
