@@ -92,11 +92,7 @@ export default {
     },
     // grabbing the image[path] from state to be set as konva v-image
     mockImg() {
-      // getting stageContainer div 'center-canvas' offsetHeight and offsetWidth
-      const stageContainer = document.querySelector("#center-canvas");
-      const imageHeight = stageContainer.offsetHeight;
-      const imageWidth = stageContainer.offsetWidth;
-
+     
       const image = new window.Image();
       image.src = this.$store.state.imagePath;
 
@@ -109,11 +105,11 @@ export default {
   mounted() {
     window.addEventListener("load", () => {
       const stageContainer = document.querySelector("#center-canvas");
-      const stageHeight = stageContainer.offsetHeight;
-      const stageWidth = stageContainer.offsetWidth;
+      //const stageHeight = stageContainer.offsetHeight;
+      //const stageWidth = stageContainer.offsetWidth;
       // setting up stage height and width
-      this.stageConfig.width = stageWidth;
-      this.stageConfig.height = stageHeight;
+      this.stageConfig.width = stageContainer.offsetWidth;
+      this.stageConfig.height = stageContainer.offsetHeight;
       this.showStage = true;
     });
   },
@@ -126,12 +122,12 @@ export default {
 
       const stageContainer = document.querySelector("#center-canvas");
       
-      const stageHeight = stageContainer.offsetHeight;
-      const stageWidth = stageContainer.offsetWidth;
+      // const stageHeight = stageContainer.offsetHeight;
+      // const stageWidth = stageContainer.offsetWidth;
 
       actualImg.to({
-        width: stageWidth,
-        height: stageHeight
+        width: stageContainer.offsetWidth,
+        height: stageContainer.offsetHeight
       });
 
       stage.batchDraw();
@@ -139,17 +135,17 @@ export default {
       // residing image to fit stage on resize
       window.addEventListener("resize", () => {
         
-        const stageHeight = stageContainer.offsetHeight;
-        const stageWidth = stageContainer.offsetWidth;
+        // const stageHeight = stageContainer.offsetHeight;
+        // const stageWidth = stageContainer.offsetWidth;
 
         stage.to({
-          width: stageWidth,
-          height: stageHeight
+          width: stageContainer.offsetWidth,
+          height: stageContainer.offsetHeight
         });
 
         actualImg.to({
-          width: stageWidth,
-          height: stageHeight
+          width: stageContainer.offsetWidth,
+          height: stageContainer.offsetHeight
         });
 
         stage.batchDraw();
