@@ -1,4 +1,5 @@
 # preVuer
+<a href="https://github.com/preVuer-org/preVuer"><img src="./assets/preVuerLogo.png"/></a>
 **preVuer** is a *prototyping tool for Vue developers* to quickly create component template files
 
 preVuer enables developers to translate UI design mock-ups into single-page-applications, visualizing component position and parent/child relationships. Simply import your image, create and customize your components, and export ready-to-use .vue template files.
