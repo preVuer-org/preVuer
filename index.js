@@ -11,7 +11,7 @@ async function createWindow() {
     .then((name) => console.log(`Added Extension:  ${name}`))
     .then(
       win.loadFile('index.html'),
-      // win.webContents.openDevTools(),
+      //win.webContents.openDevTools(),
       win.on('closed', () => {
         win = null;
       })
