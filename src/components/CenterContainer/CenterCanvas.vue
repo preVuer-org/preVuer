@@ -4,9 +4,10 @@
       <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
         <v-layer ref="imageLayer" :config="imgLayerConfig">
           <!-- mock image to draw boxes on -->
-          <v-image ref="actualImage" :config="{
+          <v-image :config="{
           image: mockImg || image
-          }"></v-image>
+          }">
+          </v-image>
         </v-layer>
         <v-layer ref="layer">
           <!-- all the boxes from components -->
@@ -37,8 +38,8 @@ export default {
       },
       // allow dragging the background image
       imgLayerConfig: {
-        draggable: true
-      },
+           draggable: true
+        },
       // make sure boxes can't rotate
       trConfig: {
         rotateEnabled: false
@@ -96,17 +97,19 @@ export default {
     },
     // grabbing the image[path] from state to be set as konva v-image
     mockImg() {
-      // getting stageContainer offsetHeight and offsetWidth
+      
+      // grab stageContainer div 'center-canvas' offsetHeight and offsetWidth
       const stageContainer = document.querySelector("#center-canvas");
       const height = stageContainer.offsetHeight;
       const width = stageContainer.offsetWidth;
+      
       const image = new window.Image();
-
       image.src = this.$store.state.imagePath;
-      // changing image size in according to stage offsetHeight and offsetWidth
+      
+      // resizing image to fit 'center-canvas' size
       image.width = width;
       image.height = height;
-
+      
       image.onload = () => {
         this.image = image;
       };
@@ -114,49 +117,20 @@ export default {
     }
   },
   mounted() {
+    
     window.addEventListener("load", () => {
-      // getting stageContainer offsetHeight and offsetWidth
       const stageContainer = document.querySelector("#center-canvas");
-      const height = stageContainer.offsetHeight;
-      const width = stageContainer.offsetWidth;
-
-      // setting up stage to have the same height and width as stageContainer
-      this.stageConfig.width = width;
-      this.stageConfig.height = height;
-
+      const stageHeight = stageContainer.offsetHeight;
+      const stageWidth = stageContainer.offsetWidth;
+      
+      // setting up stage height and width
+      this.stageConfig.width = stageWidth;
+      this.stageConfig.height = stageHeight;
+      
       this.showStage = true;
     });
     window.addEventListener("resize", () => {
-      // getting stageContainer offsetHeight and offsetWidth
-      const stageContainer = document.querySelector("#center-canvas");
-      const height = stageContainer.offsetHeight;
-      const width = stageContainer.offsetWidth;
-
-      // setting up stage to have the same height and width as stageContainer
-      this.stageConfig.width = width;
-      this.stageConfig.height = height;
-
-      //shaping image layer to fit new size of stage
-      if (this.$refs.actualImage.getStage()) {
-        const img = this.$refs.actualImage.getStage();
-        console.log("imgLayer: ", img.size());
-        img.size({
-          width: width,
-          height: height
-        });
-        console.log("imgLayer resized: ", img.size());
-      }
-
-      // redraw stage
-
-      //console.log(this.$refs);
-      //const stage = this.$refs.stage.getStage();
-      //stage.batchDraw();
-
-      //console.log('canvasContainerW: ', width, 'canvasContainerH: ', height);
-
-      // console.log('stageW: ', stage.width());
-      // console.log('stageH: ', stage.height());
+      
     });
   }
 };
