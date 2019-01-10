@@ -14,8 +14,8 @@ export default {
   importImageFile({ commit }, payload) {
     commit('IMPORT_IMAGE_FILE', payload);
   },
-  clearWorkspace({ commit }) {
-    commit('CLEAR_WORKSPACE');
+  clearAllComponents({ commit }) {
+    commit('CLEAR_ALL_COMPONENTS');
   },
   changeParent({ commit }, payload) {
     commit('CHANGE_PARENT', payload);
