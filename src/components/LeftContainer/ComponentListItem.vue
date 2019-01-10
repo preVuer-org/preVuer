@@ -1,7 +1,9 @@
 <template>
   <div class="component-list-item">
     <div id="title-and-color">
+      <!-- component title -->
       <p id="component-title">{{ component.title }}</p>
+      <!-- change color input field  -->
       <input
         :id="component.id"       
         type='color'
@@ -10,10 +12,10 @@
         class="change-color"
       />
     </div>
+    <!-- component details -->
     <div id="component-details">
-
       <p id="parent-menu-label">Parent</p>
-
+        <!--  select drop-down for parent options --> 
         <select
           class="select"
           @change="changeParent" 
@@ -28,8 +30,7 @@
             :id="parent.id"
           > {{ parent.title }} </option>
         </select>
-
-
+        <!--  delete component button -->
         <button class="delete-button">
           <i class="fa fa-trash-o" 
             aria-hidden="true" 
@@ -37,7 +38,6 @@
             @click="deleteComponent"
           ></i>
         </button>
-
     </div>
   </div>
 </template>
@@ -99,7 +99,7 @@
     margin-left: 5px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+  
     align-items: center;
   }
   .component-list-item {

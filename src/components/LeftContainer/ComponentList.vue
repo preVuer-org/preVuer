@@ -1,4 +1,5 @@
 <template>
+  <!-- renders Component List Items -->
   <div id="component-list">
     <component-list-item 
       v-for="(component, index) in getComponents" 
