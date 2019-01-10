@@ -13,7 +13,7 @@ npm start
 ```
 
 ## How to use preVuer
-Once preVuer has opened up, you'll see that it is split up into three sections. 
+Once preVuer has opened up, you'll see that it is split up into three sections: 
 
 - **Left Section**: *adding, editing, deleting components*
   - To create a component, enter the title of your component and click the "+" button (or hit enter on your keyboard).
