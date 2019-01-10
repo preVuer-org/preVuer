@@ -2,12 +2,11 @@
   <div id="center-canvas">
     <div v-if="showStage">
       <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
-        <v-layer ref="imageLayer" :config="imgLayerConfig">
+        <v-layer ref="imageLayer">
           <!-- mock image to draw boxes on -->
-          <v-image :config="{
+          <v-image ref="actualImage" :config="{
           image: mockImg || image
-          }">
-          </v-image>
+          }"></v-image>
         </v-layer>
         <v-layer ref="layer">
           <!-- all the boxes from components -->
@@ -36,10 +35,6 @@ export default {
         width: 0,
         height: 0
       },
-      // allow dragging the background image
-      imgLayerConfig: {
-           draggable: true
-        },
       // make sure boxes can't rotate
       trConfig: {
         rotateEnabled: false
@@ -97,19 +92,10 @@ export default {
     },
     // grabbing the image[path] from state to be set as konva v-image
     mockImg() {
-      
-      // getting stageContainer div 'center-canvas' offsetHeight and offsetWidth
-      const stageContainer = document.querySelector("#center-canvas");
-      const imageHeight = stageContainer.offsetHeight;
-      const imageWidth = stageContainer.offsetWidth;
-      
+     
       const image = new window.Image();
       image.src = this.$store.state.imagePath;
-      
-      // resizing image to fit 'center-canvas' size
-      image.height = imageHeight;
-      image.width = imageWidth;
-      
+
       image.onload = () => {
         this.image = image;
       };
@@ -117,20 +103,46 @@ export default {
     }
   },
   mounted() {
-    
     window.addEventListener("load", () => {
       const stageContainer = document.querySelector("#center-canvas");
-      const stageHeight = stageContainer.offsetHeight;
-      const stageWidth = stageContainer.offsetWidth;
       
       // setting up stage height and width
-      this.stageConfig.width = stageWidth;
-      this.stageConfig.height = stageHeight;
-      
+      this.stageConfig.width = stageContainer.offsetWidth;
+      this.stageConfig.height = stageContainer.offsetHeight;
       this.showStage = true;
     });
-    window.addEventListener("resize", () => {
+  },
+  updated: function() {
+    this.$nextTick(function() {
       
+      // residing image to fit stage on load
+      const stage = this.$refs.stage.getStage();
+      const actualImg = this.$refs.actualImage.getStage();
+
+      const stageContainer = document.querySelector("#center-canvas");
+      
+      actualImg.to({
+        width: stageContainer.offsetWidth,
+        height: stageContainer.offsetHeight
+      });
+
+      stage.batchDraw();
+
+      // residing image to fit stage on resize
+      window.addEventListener("resize", () => {
+        
+        stage.to({
+          width: stageContainer.offsetWidth,
+          height: stageContainer.offsetHeight
+        });
+
+        actualImg.to({
+          width: stageContainer.offsetWidth,
+          height: stageContainer.offsetHeight
+        });
+
+        stage.batchDraw();
+      });
     });
   }
 };
