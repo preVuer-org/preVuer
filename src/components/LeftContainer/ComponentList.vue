@@ -16,7 +16,7 @@
   export default {
     name: 'component-list',
     components: {
-      ComponentListItem
+      ComponentListItem,
     },
     computed: {
       getComponents() {

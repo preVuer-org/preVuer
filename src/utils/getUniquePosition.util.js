@@ -8,6 +8,11 @@ const generateOffsetPositions = () => {
   return output;
 };
 
+/**
+ * Returns a position that should not have another component box in the same spot
+ * @param { Array } components - all the components from state
+ * @returns { Array } [x, y]
+ */
 
 const getUniquePosition = (components) => {
   // get position options for new component

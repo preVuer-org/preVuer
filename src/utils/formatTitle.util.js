@@ -1,3 +1,9 @@
+/**
+ * Returns a string that is formatted to captialize the first letter, lose all numbers and spacing
+ * @param { String } string - string from currentText in state, which is from the user input
+ * @returns { String } - formatted title string
+ */
+
 const formatTitle = (string) => {
   return string
     .replace(/[a-z]+/gi,

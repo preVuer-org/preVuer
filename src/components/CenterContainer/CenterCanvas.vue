@@ -2,11 +2,13 @@
   <div id="center-canvas">
     <v-stage ref="stage" :config="stageConfig" @mousedown="handleStageMouseDown">
     <v-layer ref="imageLayer">
+      <!-- mock image to draw boxes on -->
       <v-image :config="{
           image: mockImg || image
         }"/>
     </v-layer>
     <v-layer ref="layer">
+      <!-- all the boxes from components -->
       <v-rect 
         v-for="rect in rectangles"
         :key="rect.id"
@@ -25,14 +27,16 @@
     name: 'center-canvas',
     data() {
       return {
+        // setting the width and height of the canvas stage
         stageConfig: {
           width: window.innerWidth,
           height: window.innerHeight,
         },
+        // make sure boxes can't rotate
         trConfig: {
           rotateEnabled: false,
         },
-        //selectedRectId: '',
+        // v-image mock image first set as null
         image: null,
       };
     },
@@ -44,44 +48,46 @@
         document.body.style.cursor = 'default';
       },
       handleStageMouseDown(e) {
-        // Grab transformer
+        // grab transformer
         const transformerNode = this.$refs.transformer.getStage();
-        // Clicked on the stage -> Clear Transformer Selection
+        // clicked on the stage -> clear transformer selection
         if (e.target === e.target.getStage()) {
-          // Remove transfomer
+          // remove transfomer
           transformerNode.detach();
-          // Redraw layer
+          // redraw layer
           transformerNode.getLayer().batchDraw();
         } else {
-          // Clicked on transformer -> Do nothing
+          // clicked on transformer -> do nothing
           if (e.target.getParent().className === 'Transformer') {
             // eslint-disable-next-line no-useless-return
             return;
           }
-          // Do nothing if transfomer already attached to rectangle
+          // do nothing if transfomer already attached to rectangle
           if (e.target === transformerNode.node()) {
           // eslint-disable-next-line no-useless-return
             return;
           }
-          // Do nothing if clicked on background image
+          // do nothing if clicked on background image
           if (e.target.className === 'Image'){
-            // Remove transfomer
+            // remove transfomer
             transformerNode.detach();
-            // Redraw layer
+            // redraw layer
             transformerNode.getLayer().batchDraw();
             return;
           }
-          // Clicked on rectangle -> Attach Transfomer to it
+          // clicked on rectangle -> attach transfomer to it
           transformerNode.attachTo(e.target);
-          // Redraw layer
+          // redraw layer
           transformerNode.getLayer().batchDraw();
         }
-      }
+      },
     },
     computed: {
+      // grab all components in state for konva rectangle render in vrect
       rectangles(){
         return this.$store.state.components;
       },
+      // grabbing the image[path] from state to be set as konva v-image
       mockImg(){
         const image = new window.Image();
         image.src = this.$store.state.imagePath;

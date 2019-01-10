@@ -30,9 +30,11 @@ import importImageFileFunc from '../../utils/importImageFile.util.js';
   export default {
     name: 'top-bar',
     methods: {
+      // remove image from konva
       clearImage() {
         this.$store.dispatch('clearImage');
       },
+      // electron function to grab the image path from local machine
       importImageFile() {
         const file = importImageFileFunc();
         this.$store.dispatch('importImageFile', file);
