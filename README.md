@@ -1,5 +1,5 @@
 # preVuer
-<a href="https://github.com/preVuer-org/preVuer"><img src="./assets/preVuerLogo.png"/></a>
+<p align="center"><img src="./assets/preVuerLogo.png"/></p>
 
 **preVuer** is a *prototyping tool for Vue developers* to quickly create component template files
 
