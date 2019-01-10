@@ -1,7 +1,7 @@
 const { dialog } = require('electron').remote;
 
 /**
- * Fires the Electron dialog box to show an alert to confirm clear image
+ * Fires the Electron dialog box alert to confirm clear image
  */
 
 const clearAllComponents = () => {

@@ -19,6 +19,7 @@
       ComponentListItem,
     },
     computed: {
+      // returns array of component objects
       getComponents() {
         return this.$store.getters.getComponents;
       },

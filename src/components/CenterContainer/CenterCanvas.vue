@@ -38,7 +38,7 @@ export default {
       },
       // allow dragging the background image
       imgLayerConfig: {
-           draggable: true
+          draggable: false
         },
       // make sure boxes can't rotate
       trConfig: {
@@ -117,7 +117,6 @@ export default {
     }
   },
   mounted() {
-    
     window.addEventListener("load", () => {
       const stageContainer = document.querySelector("#center-canvas");
       const stageHeight = stageContainer.offsetHeight;

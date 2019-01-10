@@ -76,7 +76,7 @@
       getParents() {
         return this.$store.getters.getComponents;
       },
-    },
+    }
   }
 </script>
 
