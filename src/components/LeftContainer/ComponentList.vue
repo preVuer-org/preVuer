@@ -23,7 +23,7 @@
       getComponents() {
         return this.$store.getters.getComponents;
       },
-    },
+    }
   }
 </script>
 

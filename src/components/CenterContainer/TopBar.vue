@@ -24,9 +24,8 @@
 </template>
 
 <script>
-
-import importImageFileFunc from '../../utils/importImageFile.util.js';
-import clearImageAlert from '../../utils/clearImageAlert.util.js'
+  import importImageFileFunc from '../../utils/importImageFile.util.js';
+  import clearImageAlert from '../../utils/clearImageAlert.util.js'
 
   export default {
     name: 'top-bar',
