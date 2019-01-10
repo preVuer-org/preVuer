@@ -1,5 +1,9 @@
 const { dialog } = require('electron').remote;
 
+/**
+ * Fires Electron dialog box to alert users that the name is already taken
+ */
+
 const uniqueNameAlert = () => {
   const options = {
     buttons: ['Okay'],

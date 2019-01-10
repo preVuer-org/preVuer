@@ -17,6 +17,7 @@ const store = new Vuex.Store({
     components: [],
     focusComponent: {},
     imagePath: '',
+    usedColors: [],
   },
   getters,
   mutations,

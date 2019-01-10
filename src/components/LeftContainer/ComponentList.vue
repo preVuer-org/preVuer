@@ -1,4 +1,5 @@
 <template>
+  <!-- renders Component List Items -->
   <div id="component-list">
     <component-list-item 
       v-for="(component, index) in getComponents" 
@@ -15,18 +16,21 @@
   export default {
     name: 'component-list',
     components: {
-      ComponentListItem
+      ComponentListItem,
     },
     computed: {
+      // returns array of component objects
       getComponents() {
-        return this.$store.getters.GET_COMPONENTS;
+        return this.$store.getters.getComponents;
       },
-    },
+    }
   }
 </script>
 
 <style> 
   #component-list{
     margin-top: 20px;
+    max-height: 580px;
+    overflow: scroll;
   }
 </style>

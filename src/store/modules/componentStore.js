@@ -11,18 +11,19 @@ const componentStore = new Vuex.Store({
       parentId: null,
       parentTitle: 'none',
       childrenIds: [],
-      x: 100,
-      y: 100,
+      // konva attributes below here
+      x: null,
+      y: null,
       height: 50,
       width: 50,
-      stroke: 'black',
-      strokeWidth: 3,
+      stroke: '#646464',
+      strokeWidth: 1.5,
       strokeScaleEnabled: false,
       draggable: true,
       opacity: 0.5,
       fill: 'blue',
-    }
-  }
+    },
+  },
 });
 
 export default componentStore;
