@@ -15,7 +15,7 @@ npm start
 ## How to use preVuer
 Once preVuer has opened up, you'll see that it is split up into three sections: 
 
-- **Left Section**: *adding, editing, deleting components*
+- **Left Section**: *add, edit, delete components*
   - To create a component, enter the title of your component and click the "+" button (or hit enter on your keyboard).
   - Once entered, an item appears in the **Left Section** with the component’s name, a color box, select dropdown, and delete button. A corresponding box appears in the **Middle Section** of the application.
   - For each *preVuer* component, you can change the color the of box, select a parent or delete the component itself.
