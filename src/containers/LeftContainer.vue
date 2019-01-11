@@ -108,6 +108,6 @@
     border: none;
   }
   .component-list {
-    overflow: scroll;
+    /*overflow: scroll;*/
   }
 </style>

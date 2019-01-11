@@ -63,7 +63,7 @@
   #tree-container {
     color: #E7E7E7;
     font-weight: 500;
-    overflow: scroll;
+    /*overflow: scroll;*/
     padding-bottom: 0 5px 5px 5px;
   }
   #nest-item {
