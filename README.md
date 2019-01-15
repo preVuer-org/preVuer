@@ -1,5 +1,4 @@
 # preVuer
-<p align="center"><img src="./assets/preVuerLogo.png"/></p>
 
 **preVuer** is a *prototyping tool for Vue developers* to quickly create component template files
 
@@ -12,7 +11,8 @@ preVuer enables developers to translate UI design mock-ups into single-page-appl
 
 As of now, to use our application on your local machine, please clone from this repo and run our start command:
 ```
-git clone https://github.com/preVuer-org/preVuer
+git clone https://github.com/preVuer-org/preVuer-production
+npm install
 npm start
 ```
 
