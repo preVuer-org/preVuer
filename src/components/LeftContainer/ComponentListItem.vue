@@ -1,9 +1,7 @@
 <template>
   <div class="component-list-item">
     <div id="title-and-color">
-      <!-- component title -->
       <p id="component-title">{{ component.title }}</p>
-      <!-- change color input field  -->
       <input
         :id="component.id"       
         type='color'
@@ -12,10 +10,8 @@
         class="change-color"
       />
     </div>
-    <!-- component details -->
     <div id="component-details">
       <p id="parent-menu-label">Parent</p>
-        <!--  select drop-down for parent options --> 
         <select
           class="select"
           @change="changeParent" 
@@ -30,7 +26,6 @@
             :id="parent.id"
           > {{ parent.title }} </option>
         </select>
-        <!--  delete component button -->
         <button class="delete-button">
           <i class="fa fa-trash-o" 
             aria-hidden="true" 
@@ -54,11 +49,9 @@
     methods: {
       deleteComponent(e) {
         const transformerNode = this.$root.$children[0].$children[1].$children[1].$refs.transformer.getStage();
-        // remove transfomer which otherwise will be left on the stage
         transformerNode.detach();
-        // redraw layer
         transformerNode.getLayer().batchDraw();
-        this.$store.dispatch('deleteComponent', e.target.id)
+        this.$store.dispatch('deleteComponent', e.target.id);
       },
       changeParent(e) {
         const component = e.target.id;
@@ -68,11 +61,10 @@
       changeColor(e) {
         const component = e.target.id;
         const color = e.target.value;
-        this.$store.dispatch('changeColor', [component, color])
+        this.$store.dispatch('changeColor', [component, color]);
       }
     },
     computed: {
-      // grab all components for the parent select options
       getParents() {
         return this.$store.getters.getComponents;
       },

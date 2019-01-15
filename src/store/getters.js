@@ -4,6 +4,5 @@ export default {
   getComponents: state => state.components,
   getCurrentText: state => state.currentText,
   getImagePath: state => state.imagePath,
-  getNestableItems: state => unflatten(state.components)
-
+  getNestableItems: state => unflatten(state.components),
 };

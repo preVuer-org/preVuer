@@ -2,7 +2,7 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   target: 'electron-main',
   entry: './src/main.js',
   output: {

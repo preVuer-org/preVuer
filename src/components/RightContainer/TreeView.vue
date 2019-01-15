@@ -3,7 +3,6 @@
     <div>
       <p id="tree-view-header" class="md-title">Component Tree</p>
     </div>
-    <!-- Component Tree Visualizer -->
     <div id="tree-container">
       <vue-nestable 
         v-model="nestableItems"
@@ -15,13 +14,11 @@
       </vue-nestable>
     </div>
     <div id="export-components-container">
-      <!-- ENABLED Export Components button -->
       <md-button 
         class="md-raised md-primary md-accent"
         @click="createFiles"
         v-if="componentsExist" 
       >Export Components</md-button>
-      <!-- DISABLED Export Components button -->
       <md-button 
         class="md-raised md-primary md-accent" 
         v-else disabled
@@ -36,17 +33,14 @@
   export default {
     name: 'tree-view',
     computed: {
-      // returns an array of nested objects, representing component hierarchy
       nestableItems() {
         return this.$store.getters.getNestableItems;
       },
-      // returns length of component array, used to conditionally Enable/Disable 'Export Components' button
       componentsExist() {
-        return this.$store.getters.getComponents.length
+        return this.$store.getters.getComponents.length;
       }
     },
     methods: {
-      // creates and exports .vue template files
       createFiles() {
         createFilesFunc(this.$store.state.components);
       }
@@ -63,7 +57,6 @@
   #tree-container {
     color: #E7E7E7;
     font-weight: 500;
-    /*overflow: scroll;*/
     padding-bottom: 0 5px 5px 5px;
   }
   #nest-item {
